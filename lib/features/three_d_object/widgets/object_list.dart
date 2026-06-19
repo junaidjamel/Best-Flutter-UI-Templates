@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:flutter_ui/core/theme/app_typography.dart';
 import 'package:flutter_ui/features/three_d_object/const/three_d_object_colors.dart';
 
@@ -89,7 +90,7 @@ class _ObjectCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(width: 12.w),
+          12.hSpace,
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 20.h),
@@ -110,7 +111,7 @@ class _ObjectCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8.w),
+                      8.hSpace,
                       Expanded(
                         child: Text(
                           item.creator,
@@ -136,7 +137,7 @@ class _ObjectCard extends StatelessWidget {
                       fontSize: 22.sp,
                     ),
                   ),
-                  SizedBox(height: 6.h),
+                  6.vSpace,
                   Row(
                     children: [
                       Icon(
@@ -146,7 +147,7 @@ class _ObjectCard extends StatelessWidget {
                         ),
                         size: 17.sp,
                       ),
-                      SizedBox(width: 4.w),
+                      4.hSpace,
                       Text(
                         item.likes,
                         style: AppTypography.label.copyWith(
@@ -162,7 +163,7 @@ class _ObjectCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 16.w),
+          16.hSpace,
         ],
       ),
     );
