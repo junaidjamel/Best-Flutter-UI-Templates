@@ -4,7 +4,11 @@ A collection of beautiful, production-ready Flutter UI templates and animations 
 
 <p align="left">
   <a href="https://www.patreon.com/c/junaidjameel/membership">
-    <img src="https://img.shields.io/badge/Support%20on-Patreon-FF424D?style=for-the-badge&logo=patreon&logoColor=white" alt="Patreon">
+    <img
+      src="assets/readme/patreon-banner.png"
+      alt="Support on Patreon"
+      width="220"
+    />
   </a>
 </p>
 
