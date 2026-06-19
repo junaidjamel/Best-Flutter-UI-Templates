@@ -17,7 +17,6 @@ class ExploreHeader extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       centerTitle: true,
-      toolbarHeight: 64.h,
 
       title: Text(
         'Explore',
