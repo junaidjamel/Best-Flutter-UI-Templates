@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_ui/features/three_d_object/widgets/category_filter_list.dart';
 import 'package:flutter_ui/features/three_d_object/widgets/explore_header.dart';
 
 class ThreeDObjectView extends StatelessWidget {
@@ -18,6 +20,10 @@ class ThreeDObjectView extends StatelessWidget {
       child: Scaffold(
         appBar: const ExploreHeader(),
         backgroundColor: Colors.transparent,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [SizedBox(height: 20.h), const CategoryFilterList()],
+        ),
       ),
     );
   }
