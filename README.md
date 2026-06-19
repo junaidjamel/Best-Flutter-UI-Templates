@@ -8,6 +8,7 @@ A collection of beautiful, production-ready Flutter UI templates and animations 
       src="assets/patreon.png"
       alt="Support on Patreon"
       width="220"
+      height="100"
     />
   </a>
 </p>
