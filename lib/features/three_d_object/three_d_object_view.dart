@@ -14,7 +14,7 @@ class ThreeDObjectView extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Color(0xFF1C1C1E), Color(0xFF161618), Color(0xFF111113)],
+          colors: [Color(0xff3E3E3E), Color(0xFF161618), Color(0xFF111113)],
           stops: [0.0, 0.5, 1.0],
         ),
       ),
