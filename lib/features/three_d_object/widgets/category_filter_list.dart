@@ -22,7 +22,7 @@ class _CategoryFilterListState extends State<CategoryFilterList> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50.h,
+      height: 45.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.symmetric(horizontal: 20.w),

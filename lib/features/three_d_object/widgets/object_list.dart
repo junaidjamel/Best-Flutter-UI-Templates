@@ -9,11 +9,11 @@ class ObjectList extends StatelessWidget {
 
   static const _items = [
     _ObjectItem(
-      title: 'Cyber Shroom',
-      creator: 'Emilia K',
-      likes: '36k likes',
-      imagePath: 'assets/images/three_d_object/cyber_shroom.png',
-      avatarColor: Color(0xFFF5A3CE),
+      title: 'Rainy Jumper',
+      creator: 'Baristo W',
+      likes: '45k likes',
+      imagePath: 'assets/images/three_d_object/rainbow.png',
+      avatarColor: Color(0xFFD7E7EC),
     ),
     _ObjectItem(
       title: 'Error Buddy',
@@ -22,6 +22,14 @@ class ObjectList extends StatelessWidget {
       imagePath: 'assets/images/three_d_object/error_buddy.png',
       avatarColor: Color(0xFFE7D4C0),
     ),
+    _ObjectItem(
+      title: 'Cyber Shroom',
+      creator: 'Emilia K',
+      likes: '36k likes',
+      imagePath: 'assets/images/three_d_object/cyber_shroom.png',
+      avatarColor: Color(0xFFF5A3CE),
+    ),
+
     _ObjectItem(
       title: 'Canned Slack',
       creator: 'Julia G',
@@ -63,10 +71,12 @@ class _ObjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(8.r),
       height: 142.h,
       decoration: BoxDecoration(
         color: ThreeDObjectColors.cardBg,
         borderRadius: BorderRadius.circular(20.r),
+        border: Border.all(color: ThreeDObjectColors.borderClr),
       ),
       child: Row(
         children: [
@@ -74,7 +84,7 @@ class _ObjectCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16.r),
             child: Image.asset(
               item.imagePath,
-              width: 142.w,
+              width: 130.w,
               height: 142.h,
               fit: BoxFit.cover,
             ),
