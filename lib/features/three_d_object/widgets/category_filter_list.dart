@@ -49,7 +49,7 @@ class _CategoryFilterListState extends State<CategoryFilterList> {
                     color: isSelected
                         ? ThreeDObjectColors.whiteClr.withValues(alpha: .68)
                         : ThreeDObjectColors.borderClr,
-                    width: isSelected ? 2.w : 1.5.w,
+                    width: isSelected ? 1.5.w : 1.w,
                   ),
                 ),
                 child: Text(

@@ -23,7 +23,6 @@ class ExploreHeader extends StatelessWidget implements PreferredSizeWidget {
         'Explore',
         style: AppTypography.displayLarge.copyWith(
           color: ThreeDObjectColors.whiteClr,
-          fontSize: 32.sp,
         ),
       ),
       actions: [
