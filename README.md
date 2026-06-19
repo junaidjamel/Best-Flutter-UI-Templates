@@ -1,8 +1,14 @@
 # Best Flutter UI Templates
 
-A collection of clean, modern, and completely free Flutter UI templates built with Flutter and Dart.
+A collection of beautiful, production-ready Flutter UI templates and animations built with Flutter and Dart.
 
-[![Support me on Patreon](https://img.shields.io/badge/Support%20me-Patreon-orange?style=for-the-badge&logo=patreon)](https://www.patreon.com/c/junaidjameel/membership)
+<p align="left">
+  <a href="https://www.patreon.com/c/junaidjameel/membership">
+    <img src="https://img.shields.io/badge/Support%20on-Patreon-FF424D?style=for-the-badge&logo=patreon&logoColor=white" alt="Patreon">
+  </a>
+</p>
+
+Completely free and open source. New UI templates are added regularly.
 
 ---
 
@@ -10,7 +16,7 @@ A collection of clean, modern, and completely free Flutter UI templates built wi
 
 ### 1. Dark Explore UI
 
-A minimal dark Explore screen featuring 3D object cards, category filters, and a modern mobile UI layout.
+A minimal dark Explore screen featuring object cards, category filters, and a modern mobile UI layout.
 
 #### UI Reference
 
