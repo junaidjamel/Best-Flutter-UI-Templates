@@ -4,12 +4,7 @@ A collection of beautiful, production-ready Flutter UI templates and animations 
 
 <p align="left">
   <a href="https://www.patreon.com/c/junaidjameel/membership">
-    <img
-      src="assets/patreon.png"
-      alt="Support on Patreon"
-      width="220"
-      height="100"
-    />
+    <img src="assets/readme/patreon-banner.png" width="280" />
   </a>
 </p>
 
