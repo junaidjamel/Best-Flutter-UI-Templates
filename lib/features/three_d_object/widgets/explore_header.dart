@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/3d_object/const/object_colors.dart';
-import 'package:flutter_ui/core/const.dart';
+import 'package:flutter_ui/core/const/app_spacing.dart';
 import 'package:flutter_ui/core/theme/app_typography.dart';
+import 'package:flutter_ui/features/three_d_object/const/three_d_object_colors.dart';
 
 class ExploreHeader extends StatelessWidget implements PreferredSizeWidget {
   const ExploreHeader({super.key});
@@ -20,23 +20,23 @@ class ExploreHeader extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         'Explore',
         style: AppTypography.displayLarge.copyWith(
-          color: ObjectColors.whiteClr,
+          color: ThreeDObjectColors.whiteClr,
         ),
       ),
       actions: [
         Padding(
-          padding: kRightPadding,
+          padding: AppSpacing.rightPadding,
           child: Container(
             decoration: BoxDecoration(
-              color: ObjectColors.iconsBg,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: ObjectColors.borderClr),
+              color: ThreeDObjectColors.iconsBg,
+              borderRadius: BorderRadius.circular(AppSpacing.radiusMedium),
+              border: Border.all(color: ThreeDObjectColors.borderClr),
             ),
             child: IconButton(
               onPressed: () {},
               icon: Icon(
                 CupertinoIcons.search,
-                color: ObjectColors.whiteClr,
+                color: ThreeDObjectColors.whiteClr,
                 size: 25,
               ),
             ),

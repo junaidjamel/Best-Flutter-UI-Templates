@@ -74,7 +74,7 @@ class AppTypography {
     height: 1.5,
   );
 
-  static TextTheme googleTextTheme([TextTheme? base]) {
+  static TextTheme textTheme([TextTheme? base]) {
     return GoogleFonts.robotoTextTheme(base);
   }
 }

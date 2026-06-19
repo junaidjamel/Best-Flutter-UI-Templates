@@ -4,7 +4,6 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 // class GoogleButton extends StatelessWidget {
 //   final String text;
 //   final VoidCallback onPressed;
@@ -34,7 +33,7 @@
 //             //   Assets.icons.auth.google.path,
 //             //   width: 22.w,
 //             // ),
-           
+
 //             Text(text, style: AppTypography.kBold16.copyWith(fontSize: 16.sp)),
 //           ],
 //         ),

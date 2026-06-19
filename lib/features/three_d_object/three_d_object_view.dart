@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/3d_object/widget/header_widget.dart';
+import 'package:flutter_ui/features/three_d_object/widgets/explore_header.dart';
 
 class ThreeDObjectView extends StatelessWidget {
   const ThreeDObjectView({super.key});
@@ -11,11 +11,7 @@ class ThreeDObjectView extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [
-            Color(0xFF1C1C1E), // dark gray-black (top)
-            Color(0xFF161618), // slightly deeper (mid)
-            Color(0xFF111113), // near-black (bottom)
-          ],
+          colors: [Color(0xFF1C1C1E), Color(0xFF161618), Color(0xFF111113)],
           stops: [0.0, 0.5, 1.0],
         ),
       ),
