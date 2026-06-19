@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:flutter_ui/features/three_d_object/widgets/category_filter_list.dart';
 import 'package:flutter_ui/features/three_d_object/widgets/explore_header.dart';
@@ -24,7 +23,12 @@ class ThreeDObjectView extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [20.vSpace, const CategoryFilterList(), const ObjectList()],
+          children: [
+            20.vSpace,
+            const CategoryFilterList(),
+            20.vSpace,
+            const ObjectList(),
+          ],
         ),
       ),
     );

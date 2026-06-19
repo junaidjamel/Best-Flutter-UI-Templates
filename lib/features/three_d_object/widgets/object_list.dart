@@ -51,7 +51,7 @@ class ObjectList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        padding: EdgeInsets.fromLTRB(20.w, 28.h, 20.w, 24.h),
+        padding: EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 24.h),
         itemCount: _items.length,
         itemBuilder: (context, index) {
           return Padding(
