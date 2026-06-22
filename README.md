@@ -14,7 +14,7 @@ Completely free and open source. New UI templates are added regularly.
 
 ## Featured UIs
 
-### 1. Dark Explore UI
+### 1. [Dark Explore UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/dev/lib/features/three_d_object)
 
 A minimal dark Explore screen featuring object cards, category filters, and a modern mobile UI layout.
 
