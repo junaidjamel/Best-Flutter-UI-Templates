@@ -24,6 +24,16 @@ A minimal dark Explore screen featuring object cards, category filters, and a mo
 
 ---
 
+### 2. [Coffee Shop UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/coffee_shope)
+
+A modern coffee shop mobile UI featuring product filters, coffee cards, a detail screen, size selection, and a checkout CTA.
+
+#### UI Reference
+
+![Coffee Shop UI](assets/coffee_shope/ui_reference.jpg)
+
+---
+
 ## Upcoming UIs
 
 More Flutter UI templates will be added soon, including:
