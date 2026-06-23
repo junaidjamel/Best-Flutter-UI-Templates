@@ -44,7 +44,7 @@ class CoffeeSearchWidget extends StatelessWidget {
                 size: 22.sp,
               ),
               filled: true,
-              fillColor: const Color(0xff141921),
+              fillColor: CoffeeShopeColors.fieldBlack,
               contentPadding: EdgeInsets.symmetric(
                 vertical: 10.h,
                 horizontal: 16.w,
