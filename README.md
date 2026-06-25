@@ -34,6 +34,16 @@ A modern coffee shop mobile UI featuring product filters, coffee cards, a detail
 
 ---
 
+### 3. [Event Animation UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/event_animation)
+
+A clean event planner UI featuring animated summary cards, schedule items, image tiles, and a floating bottom navigation.
+
+#### UI Reference
+
+![Event Animation UI](assets/event_animation/ui_reference.jpeg)
+
+---
+
 ## Upcoming UIs
 
 More Flutter UI templates will be added soon, including:
@@ -53,3 +63,5 @@ More Flutter UI templates will be added soon, including:
 flutter pub get
 flutter run
 ```
+
+Star the repo if you like it.
