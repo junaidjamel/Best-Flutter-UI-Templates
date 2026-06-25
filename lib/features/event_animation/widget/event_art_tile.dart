@@ -26,9 +26,7 @@ class EventArtTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color statusColor = isComplete
-        ? const Color(0xff7EDCC0)
-        : const Color(0xff8E8E93);
+    final Color statusColor = const Color(0xff8E8E93);
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -75,30 +73,9 @@ class EventArtTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(13.r),
               child: Image.network(
                 imageUrl,
-                height: 50.r,
-                width: 50.r,
+                height: 55.r,
+                width: 52.r,
                 fit: BoxFit.cover,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
-
-                  return Container(
-                    height: 50.r,
-                    width: 50.r,
-                    color: EventAnimationColors.divider,
-                  );
-                },
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    height: 50.r,
-                    width: 50.r,
-                    color: EventAnimationColors.divider,
-                    child: Icon(
-                      Icons.image_not_supported_outlined,
-                      size: 18.r,
-                      color: EventAnimationColors.mutedText,
-                    ),
-                  );
-                },
               ),
             ),
 
@@ -150,18 +127,6 @@ class _TrailingIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isComplete) {
-      return Container(
-        height: 27.r,
-        width: 27.r,
-        decoration: const BoxDecoration(
-          color: Color(0xff7EDCC0),
-          shape: BoxShape.circle,
-        ),
-        child: Icon(Icons.check, size: 16.r, color: Colors.white),
-      );
-    }
-
     if (isLocked) {
       return Container(
         height: 28.r,
