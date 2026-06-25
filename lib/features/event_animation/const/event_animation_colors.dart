@@ -12,5 +12,6 @@ class EventAnimationColors {
   static const orange = Color(0xffFF8A00);
   static const orangeDeep = Color(0xffF15B21);
   static const mint = Color(0xff5DE1C2);
+  static const success = Color(0xff43A047);
   static const darkChip = Color(0xff242529);
 }

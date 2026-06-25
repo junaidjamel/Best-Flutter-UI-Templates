@@ -5,30 +5,32 @@ import 'package:flutter_ui/features/event_animation/const/event_animation_colors
 class EventSummaryCard extends StatelessWidget {
   const EventSummaryCard({super.key});
 
+  static const _dates = [
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final dates = [
-      '8',
-      '9',
-      '10',
-      '11',
-      '12',
-      '13',
-      '14',
-      '15',
-      '16',
-      '17',
-      '18',
-      '19',
-      '20',
-      '21',
-    ];
-
     return Padding(
       padding: EdgeInsets.fromLTRB(20.w, 16.h, 18.w, 14.h),
       child: Stack(
         children: [
-          Positioned.fill(child: CustomPaint(painter: _SummaryGridPainter())),
+          const Positioned.fill(
+            child: CustomPaint(painter: _SummaryGridPainter()),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -56,7 +58,7 @@ class EventSummaryCard extends StatelessWidget {
                 spacing: 14.w,
                 runSpacing: 16.h,
                 children: [
-                  for (final date in dates)
+                  for (final date in _dates)
                     _DateDot(label: date, isSelected: date == '12'),
                 ],
               ),
@@ -111,6 +113,8 @@ class _DateDot extends StatelessWidget {
 }
 
 class _SummaryGridPainter extends CustomPainter {
+  const _SummaryGridPainter();
+
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()

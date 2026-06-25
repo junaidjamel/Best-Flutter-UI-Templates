@@ -17,23 +17,23 @@ class EventAnimationView extends StatefulWidget {
 }
 
 class _EventAnimationViewState extends State<EventAnimationView> {
-  bool isExpanded = false;
-  bool _showExpanded = false; // ← drives AnimatedSwitcher separately
-
   static const _panelAnimationDuration = Duration(milliseconds: 420);
   static const _contentAnimationDuration = Duration(milliseconds: 210);
   static const _contentDelay = Duration(milliseconds: 80);
 
+  bool _isExpanded = false;
+  bool _showSummary = false;
+
   void _toggle() {
-    if (!isExpanded) {
-      setState(() => isExpanded = true);
+    if (!_isExpanded) {
+      setState(() => _isExpanded = true);
       Future.delayed(_contentDelay, () {
-        if (mounted) setState(() => _showExpanded = true);
+        if (mounted) setState(() => _showSummary = true);
       });
     } else {
-      setState(() => _showExpanded = false);
+      setState(() => _showSummary = false);
       Future.delayed(_contentDelay, () {
-        if (mounted) setState(() => isExpanded = false);
+        if (mounted) setState(() => _isExpanded = false);
       });
     }
   }
@@ -55,66 +55,40 @@ class _EventAnimationViewState extends State<EventAnimationView> {
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: _toggle,
-                child: TweenAnimationBuilder<double>(
-                  tween: Tween(
-                    begin: isExpanded ? 76.h : expandedHeight,
-                    end: isExpanded ? expandedHeight : 76.h,
-                  ),
+                child: AnimatedContainer(
+                  width: double.infinity,
+                  height: _isExpanded ? expandedHeight : 76.h,
                   duration: _panelAnimationDuration,
                   curve: Curves.easeInOutCubic,
-                  builder: (context, height, _) {
-                    return TweenAnimationBuilder<double>(
-                      tween: Tween(
-                        begin: isExpanded ? 26.r : 18.r,
-                        end: isExpanded ? 18.r : 26.r,
+                  decoration: BoxDecoration(
+                    color: EventAnimationColors.blackClr,
+                    borderRadius: BorderRadius.circular(
+                      _isExpanded ? 18.r : 26.r,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: .16),
+                        blurRadius: _isExpanded ? 32.r : 22.r,
+                        offset: Offset(0, _isExpanded ? 16.h : 10.h),
                       ),
-                      duration: _panelAnimationDuration,
-                      curve: Curves.easeInOutCubic,
-                      builder: (context, radius, _) {
-                        return Container(
-                          width: double.infinity,
-                          height: height,
-                          decoration: BoxDecoration(
-                            color: EventAnimationColors.blackClr,
-                            borderRadius: BorderRadius.circular(radius),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withValues(alpha: .16),
-                                blurRadius: isExpanded ? 32.r : 22.r,
-                                offset: Offset(0, isExpanded ? 16.h : 10.h),
-                              ),
-                            ],
-                          ),
-                          clipBehavior: Clip.antiAlias,
-                          child: AnimatedSwitcher(
-                            duration: _contentAnimationDuration,
-                            reverseDuration: _contentAnimationDuration,
-                            switchInCurve: Curves.easeInOut,
-                            switchOutCurve: Curves.easeInOut,
-                            layoutBuilder: (currentChild, previousChildren) {
-                              return Stack(
-                                alignment: Alignment.center,
-                                children: [...previousChildren, ?currentChild],
-                              );
-                            },
-                            transitionBuilder: (child, animation) {
-                              return FadeTransition(
-                                opacity: animation,
-                                child: child,
-                              );
-                            },
-                            child: _showExpanded
-                                ? const EventSummaryCard(
-                                    key: ValueKey("summary"),
-                                  )
-                                : const CollapsedEventCard(
-                                    key: ValueKey("collapsed"),
-                                  ),
-                          ),
-                        );
-                      },
-                    );
-                  },
+                    ],
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: AnimatedSwitcher(
+                    duration: _contentAnimationDuration,
+                    reverseDuration: _contentAnimationDuration,
+                    switchInCurve: Curves.easeInOut,
+                    switchOutCurve: Curves.easeInOut,
+                    layoutBuilder: (currentChild, previousChildren) {
+                      return Stack(
+                        alignment: Alignment.center,
+                        children: [...previousChildren, ?currentChild],
+                      );
+                    },
+                    child: _showSummary
+                        ? const EventSummaryCard(key: ValueKey('summary'))
+                        : const CollapsedEventCard(key: ValueKey('collapsed')),
+                  ),
                 ),
               ),
             ),
@@ -128,8 +102,23 @@ class _EventAnimationViewState extends State<EventAnimationView> {
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 padding: EdgeInsets.fromLTRB(page.w, 0, page.w, 96.h),
-                itemCount: 5,
-                itemBuilder: itemBuilder,
+                itemCount: _events.length,
+                itemBuilder: (context, index) {
+                  final event = _events[index];
+
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 16.h),
+                    child: EventArtTile(
+                      month: event.month,
+                      day: event.day,
+                      title: event.title,
+                      status: event.status,
+                      imageUrl: event.imageUrl,
+                      isComplete: event.isComplete,
+                      isLocked: event.isLocked,
+                    ),
+                  );
+                },
               ),
             ),
           ],
@@ -139,58 +128,71 @@ class _EventAnimationViewState extends State<EventAnimationView> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
-
-  Widget itemBuilder(BuildContext context, int index) {
-    final items = [
-      EventArtTile(
-        month: "Mar",
-        day: "22",
-        title: "1-1 Advisory call",
-        status: "Upcomming",
-        imageUrl:
-            "https://i.pinimg.com/736x/46/3f/4a/463f4a60723d27fc22603cb60f022850.jpg",
-        isLocked: true,
-      ),
-      EventArtTile(
-        month: "Mar",
-        day: "24",
-        title: "Custom Panel",
-        status: "Confirmed",
-        imageUrl:
-            "https://i.pinimg.com/736x/b7/dc/56/b7dc56e5b167ac85b5da1fe202ac23e1.jpg",
-        isComplete: true,
-      ),
-      EventArtTile(
-        month: "Mar",
-        day: "26",
-        title: "2027 Roadmap",
-        status: "Incomplete",
-        imageUrl:
-            "https://i.pinimg.com/736x/43/a5/b2/43a5b2cee67bf2414fc393393a64f2f0.jpg",
-        isLocked: true,
-      ),
-      EventArtTile(
-        month: "Apr",
-        day: "02",
-        title: "Creative critique",
-        status: "Open",
-        imageUrl:
-            "https://i.pinimg.com/736x/dd/69/9e/dd699e17c2cb0180549703c680e6d401.jpg",
-      ),
-      EventArtTile(
-        month: "Apr",
-        day: "07",
-        title: "Entry Test",
-        status: "Incomplete",
-        imageUrl:
-            "https://i.pinimg.com/736x/ee/83/c8/ee83c8dcb85c66d49ccb954741f8e549.jpg",
-        isLocked: true,
-      ),
-    ];
-
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: items[index],
-    );
-  }
 }
+
+class _EventItem {
+  const _EventItem({
+    required this.month,
+    required this.day,
+    required this.title,
+    required this.status,
+    required this.imageUrl,
+    this.isComplete = false,
+    this.isLocked = false,
+  });
+
+  final String month;
+  final String day;
+  final String title;
+  final String status;
+  final String imageUrl;
+  final bool isComplete;
+  final bool isLocked;
+}
+
+const _events = [
+  _EventItem(
+    month: 'Mar',
+    day: '22',
+    title: '1-1 Advisory call',
+    status: 'Upcoming',
+    imageUrl:
+        'https://i.pinimg.com/736x/46/3f/4a/463f4a60723d27fc22603cb60f022850.jpg',
+    isLocked: true,
+  ),
+  _EventItem(
+    month: 'Mar',
+    day: '24',
+    title: 'Custom Panel',
+    status: 'Confirmed',
+    imageUrl:
+        'https://i.pinimg.com/736x/b7/dc/56/b7dc56e5b167ac85b5da1fe202ac23e1.jpg',
+    isComplete: true,
+  ),
+  _EventItem(
+    month: 'Mar',
+    day: '26',
+    title: '2027 Roadmap',
+    status: 'Incomplete',
+    imageUrl:
+        'https://i.pinimg.com/736x/43/a5/b2/43a5b2cee67bf2414fc393393a64f2f0.jpg',
+    isLocked: true,
+  ),
+  _EventItem(
+    month: 'Apr',
+    day: '02',
+    title: 'Creative critique',
+    status: 'Open',
+    imageUrl:
+        'https://i.pinimg.com/736x/dd/69/9e/dd699e17c2cb0180549703c680e6d401.jpg',
+  ),
+  _EventItem(
+    month: 'Apr',
+    day: '07',
+    title: 'Entry Test',
+    status: 'Incomplete',
+    imageUrl:
+        'https://i.pinimg.com/736x/ee/83/c8/ee83c8dcb85c66d49ccb954741f8e549.jpg',
+    isLocked: true,
+  ),
+];

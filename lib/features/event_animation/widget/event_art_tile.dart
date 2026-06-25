@@ -26,8 +26,6 @@ class EventArtTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color statusColor = const Color(0xff8E8E93);
-
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
@@ -76,6 +74,18 @@ class EventArtTile extends StatelessWidget {
                 height: 55.r,
                 width: 52.r,
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 55.r,
+                    width: 52.r,
+                    color: EventAnimationColors.cardBorder,
+                    child: Icon(
+                      Icons.image_not_supported_outlined,
+                      color: EventAnimationColors.mutedText,
+                      size: 20.r,
+                    ),
+                  );
+                },
               ),
             ),
 
@@ -101,7 +111,9 @@ class EventArtTile extends StatelessWidget {
                     status,
                     style: TextStyle(
                       fontSize: 12.sp,
-                      color: statusColor,
+                      color: isComplete
+                          ? EventAnimationColors.success
+                          : EventAnimationColors.mutedText,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -128,18 +140,10 @@ class _TrailingIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isLocked) {
-      return Container(
-        height: 28.r,
-        width: 28.r,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(color: const Color(0xffD8D8D8)),
-        ),
-        child: Icon(
-          Icons.lock_outline_rounded,
-          size: 15.r,
-          color: const Color(0xff9A9A9A),
-        ),
+      return _CircleIcon(
+        icon: Icons.lock_outline_rounded,
+        iconColor: const Color(0xff9A9A9A),
+        borderColor: const Color(0xffD8D8D8),
       );
     }
 
@@ -147,6 +151,31 @@ class _TrailingIcon extends StatelessWidget {
       Icons.chevron_right_rounded,
       size: 28.r,
       color: EventAnimationColors.ink,
+    );
+  }
+}
+
+class _CircleIcon extends StatelessWidget {
+  const _CircleIcon({
+    required this.icon,
+    required this.iconColor,
+    required this.borderColor,
+  });
+
+  final IconData icon;
+  final Color iconColor;
+  final Color borderColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 28.r,
+      width: 28.r,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(color: borderColor),
+      ),
+      child: Icon(icon, size: 15.r, color: iconColor),
     );
   }
 }
