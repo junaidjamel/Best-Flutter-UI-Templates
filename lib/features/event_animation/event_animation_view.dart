@@ -50,6 +50,7 @@ class _EventAnimationViewState extends State<EventAnimationView> {
         child: Column(
           crossAxisAlignment: .start,
           children: [
+            30.vSpace,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: page.w),
               child: GestureDetector(
@@ -185,6 +186,15 @@ const _events = [
     status: 'Open',
     imageUrl:
         'https://i.pinimg.com/736x/dd/69/9e/dd699e17c2cb0180549703c680e6d401.jpg',
+  ),
+  _EventItem(
+    month: 'Apr',
+    day: '07',
+    title: 'Entry Test',
+    status: 'Incomplete',
+    imageUrl:
+        'https://i.pinimg.com/736x/ee/83/c8/ee83c8dcb85c66d49ccb954741f8e549.jpg',
+    isLocked: true,
   ),
   _EventItem(
     month: 'Apr',
