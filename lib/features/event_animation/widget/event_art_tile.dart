@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/features/event_animation/const/event_animation_colors.dart';
 
 class EventArtTile extends StatelessWidget {
@@ -30,35 +31,37 @@ class EventArtTile extends StatelessWidget {
         : const Color(0xff8E8E93);
 
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: onTap,
       child: Container(
-        height: 74,
-        padding: const EdgeInsets.symmetric(horizontal: 14),
+        height: 76.h,
+        padding: EdgeInsets.symmetric(horizontal: 14.w),
         decoration: BoxDecoration(
-          color: EventAnimationColors.cardBorder,
-          borderRadius: BorderRadius.circular(12),
+          color: EventAnimationColors.card,
+          borderRadius: BorderRadius.circular(16.r),
+          border: Border.all(color: EventAnimationColors.divider),
         ),
         child: Row(
           children: [
             SizedBox(
-              width: 42,
+              width: 42.w,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     month,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      color: Color(0xff8E8E93),
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: EventAnimationColors.mutedText,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
                     day,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      color: Color(0xff2B2B2B),
-                      fontWeight: FontWeight.w500,
+                    style: TextStyle(
+                      fontSize: 21.sp,
+                      color: EventAnimationColors.ink,
+                      fontWeight: FontWeight.w600,
                       height: 1,
                     ),
                   ),
@@ -66,19 +69,40 @@ class EventArtTile extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(width: 14),
+            SizedBox(width: 14.w),
 
             ClipRRect(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(13.r),
               child: Image.network(
                 imageUrl,
-                height: 50,
-                width: 50,
+                height: 50.r,
+                width: 50.r,
                 fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+
+                  return Container(
+                    height: 50.r,
+                    width: 50.r,
+                    color: EventAnimationColors.divider,
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 50.r,
+                    width: 50.r,
+                    color: EventAnimationColors.divider,
+                    child: Icon(
+                      Icons.image_not_supported_outlined,
+                      size: 18.r,
+                      color: EventAnimationColors.mutedText,
+                    ),
+                  );
+                },
               ),
             ),
 
-            const SizedBox(width: 14),
+            SizedBox(width: 14.w),
 
             Expanded(
               child: Column(
@@ -89,17 +113,17 @@ class EventArtTile extends StatelessWidget {
                     title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Color(0xff111111),
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      color: EventAnimationColors.ink,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 3),
+                  SizedBox(height: 3.h),
                   Text(
                     status,
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: 12.sp,
                       color: statusColor,
                       fontWeight: FontWeight.w500,
                     ),
@@ -108,7 +132,7 @@ class EventArtTile extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(width: 10),
+            SizedBox(width: 10.w),
 
             _TrailingIcon(isComplete: isComplete, isLocked: isLocked),
           ],
@@ -128,36 +152,36 @@ class _TrailingIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isComplete) {
       return Container(
-        height: 26,
-        width: 26,
+        height: 27.r,
+        width: 27.r,
         decoration: const BoxDecoration(
           color: Color(0xff7EDCC0),
           shape: BoxShape.circle,
         ),
-        child: const Icon(Icons.check, size: 16, color: Colors.white),
+        child: Icon(Icons.check, size: 16.r, color: Colors.white),
       );
     }
 
     if (isLocked) {
       return Container(
-        height: 28,
-        width: 28,
+        height: 28.r,
+        width: 28.r,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(color: const Color(0xffD8D8D8)),
         ),
-        child: const Icon(
+        child: Icon(
           Icons.lock_outline_rounded,
-          size: 15,
-          color: Color(0xff9A9A9A),
+          size: 15.r,
+          color: const Color(0xff9A9A9A),
         ),
       );
     }
 
-    return const Icon(
+    return Icon(
       Icons.chevron_right_rounded,
-      size: 28,
-      color: Color(0xff111111),
+      size: 28.r,
+      color: EventAnimationColors.ink,
     );
   }
 }
