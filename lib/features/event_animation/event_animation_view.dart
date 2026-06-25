@@ -196,13 +196,4 @@ const _events = [
         'https://i.pinimg.com/736x/ee/83/c8/ee83c8dcb85c66d49ccb954741f8e549.jpg',
     isLocked: true,
   ),
-  _EventItem(
-    month: 'Apr',
-    day: '07',
-    title: 'Entry Test',
-    status: 'Incomplete',
-    imageUrl:
-        'https://i.pinimg.com/736x/ee/83/c8/ee83c8dcb85c66d49ccb954741f8e549.jpg',
-    isLocked: true,
-  ),
 ];
