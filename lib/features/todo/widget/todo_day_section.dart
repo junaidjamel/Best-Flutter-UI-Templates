@@ -34,7 +34,7 @@ class TodoDaySection extends StatelessWidget {
         border: Border(bottom: BorderSide(color: theme.dividerColor)),
       ),
       child: AnimatedSize(
-        duration: const Duration(milliseconds: 260),
+        duration: const Duration(milliseconds: 400),
         curve: Curves.easeInOut,
         alignment: Alignment.topCenter,
         child: InkWell(

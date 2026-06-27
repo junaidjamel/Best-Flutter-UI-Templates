@@ -44,6 +44,16 @@ A clean event planner UI featuring animated summary cards, schedule items, image
 
 ---
 
+### 4. [Minimal Todo UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/todo)
+
+A minimal functional todo app with light and dark theme.
+
+#### UI Reference
+
+![Minimal Todo UI](assets/todo/todo_ui.png)
+
+---
+
 ## Upcoming UIs
 
 More Flutter UI templates will be added soon, including:
