@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ui/features/todo/const/todo_colors.dart';
 import 'package:flutter_ui/features/todo/model/todo_day.dart';
 import 'package:flutter_ui/features/todo/widget/todo_task_row.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,9 +26,12 @@ class TodoDaySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
+
     return Container(
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: TodoColors.borderClr)),
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: theme.dividerColor)),
       ),
       child: AnimatedSize(
         duration: const Duration(milliseconds: 260),
@@ -52,7 +54,7 @@ class TodoDaySection extends StatelessWidget {
                   onTap: onHeaderTap,
                   child: SizedBox(
                     width: double.infinity,
-                    child: Text(day.name, style: _dayStyle),
+                    child: Text(day.name, style: _dayStyle(context)),
                   ),
                 ),
                 if (isExpanded) ...[
@@ -60,7 +62,7 @@ class TodoDaySection extends StatelessWidget {
                   Text(
                     '${_formatDate(day.date)}  –  ${_formatTime(currentTime)}',
                     style: GoogleFonts.roboto(
-                      color: TodoColors.greyClr,
+                      color: colors.onSurfaceVariant,
                       fontSize: 18.sp,
                     ),
                   ),
@@ -77,7 +79,7 @@ class TodoDaySection extends StatelessWidget {
                     onSubmitted: onTaskAdded,
                     textInputAction: TextInputAction.done,
                     style: GoogleFonts.roboto(
-                      color: TodoColors.blackClr,
+                      color: colors.onSurface,
                       fontSize: 18.sp,
                     ),
                     decoration: InputDecoration(
@@ -86,7 +88,7 @@ class TodoDaySection extends StatelessWidget {
                       contentPadding: EdgeInsets.zero,
                       hintText: 'Add a new task...',
                       hintStyle: GoogleFonts.roboto(
-                        color: TodoColors.greyClr.withValues(alpha: .72),
+                        color: colors.onSurfaceVariant.withValues(alpha: .72),
                         fontSize: 18.sp,
                       ),
                     ),
@@ -101,13 +103,15 @@ class TodoDaySection extends StatelessWidget {
   }
 }
 
-final _dayStyle = GoogleFonts.roboto(
-  color: TodoColors.blackClr,
-  fontSize: 41.sp,
-  fontWeight: FontWeight.w900,
-  letterSpacing: -1.2.sp,
-  height: 1,
-);
+TextStyle _dayStyle(BuildContext context) {
+  return GoogleFonts.roboto(
+    color: Theme.of(context).colorScheme.onSurface,
+    fontSize: 41.sp,
+    fontWeight: FontWeight.w900,
+    letterSpacing: -1.2.sp,
+    height: 1,
+  );
+}
 
 String _formatDate(DateTime date) {
   const months = [

@@ -12,6 +12,8 @@ class TodoTaskRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return InkWell(
       onTap: onChanged,
       child: Padding(
@@ -23,11 +25,11 @@ class TodoTaskRow extends StatelessWidget {
               width: 21.w,
               height: 21.w,
               decoration: BoxDecoration(
-                color: task.isDone ? TodoColors.orangeClr : TodoColors.whiteClr,
+                color: task.isDone ? TodoColors.orangeClr : Colors.transparent,
                 border: Border.all(
                   color: task.isDone
                       ? TodoColors.orangeClr
-                      : TodoColors.greyClr,
+                      : colors.onSurfaceVariant,
                   width: 1.8,
                 ),
                 borderRadius: BorderRadius.circular(3.r),
@@ -40,13 +42,13 @@ class TodoTaskRow extends StatelessWidget {
             Text(
               task.title,
               style: GoogleFonts.roboto(
-                color: task.isDone ? TodoColors.greyClr : TodoColors.blackClr,
+                color: task.isDone ? colors.onSurfaceVariant : colors.onSurface,
                 fontSize: 18.sp,
                 height: 1.35,
                 decoration: task.isDone
                     ? TextDecoration.lineThrough
                     : TextDecoration.none,
-                decorationColor: TodoColors.greyClr,
+                decorationColor: colors.onSurfaceVariant,
                 decorationThickness: 1.5,
               ),
             ),

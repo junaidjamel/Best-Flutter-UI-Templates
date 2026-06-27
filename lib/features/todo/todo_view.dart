@@ -17,6 +17,7 @@ class _TodoViewState extends State<TodoView> {
   final _taskController = TextEditingController();
   late final Timer _clockTimer;
   DateTime _currentTime = DateTime.now();
+  bool _isDarkMode = false;
   int? _expandedDay = 0;
 
   final _days = [
@@ -120,37 +121,64 @@ class _TodoViewState extends State<TodoView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: TodoColors.whiteClr,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        actions: [
-          Padding(
-            padding: rightPadding,
-            child: IconButton(onPressed: () {}, icon: Icon(Icons.dark_mode)),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        bottom: false,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: List.generate(_days.length, (index) {
-            final day = _days[index];
-            final isExpanded = _expandedDay == index;
+    final brightness = _isDarkMode ? Brightness.dark : Brightness.light;
 
-            return TodoDaySection(
-              day: day,
-              currentTime: _currentTime,
-              isExpanded: isExpanded,
-              taskController: _taskController,
-              onHeaderTap: () => _toggleDay(index),
-              onTaskAdded: _addTask,
-              onTaskChanged: (task) {
-                setState(() => task.isDone = !task.isDone);
-              },
-            );
-          }),
+    return Theme(
+      data: ThemeData(
+        brightness: brightness,
+        scaffoldBackgroundColor: _isDarkMode
+            ? TodoColors.darkBackgroundClr
+            : TodoColors.whiteClr,
+        dividerColor: _isDarkMode
+            ? TodoColors.darkBorderClr
+            : TodoColors.borderClr,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: TodoColors.orangeClr,
+          brightness: brightness,
+        ),
+        appBarTheme: const AppBarTheme(elevation: 0, scrolledUnderElevation: 0),
+      ),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          actions: [
+            Padding(
+              padding: rightPadding,
+              child: IconButton(
+                tooltip: _isDarkMode
+                    ? 'Switch to light mode'
+                    : 'Switch to dark mode',
+                onPressed: () => setState(() => _isDarkMode = !_isDarkMode),
+                icon: Icon(
+                  _isDarkMode
+                      ? Icons.light_mode_outlined
+                      : Icons.dark_mode_outlined,
+                ),
+              ),
+            ),
+          ],
+        ),
+        body: SafeArea(
+          bottom: false,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: List.generate(_days.length, (index) {
+              final day = _days[index];
+              final isExpanded = _expandedDay == index;
+
+              return TodoDaySection(
+                day: day,
+                currentTime: _currentTime,
+                isExpanded: isExpanded,
+                taskController: _taskController,
+                onHeaderTap: () => _toggleDay(index),
+                onTaskAdded: _addTask,
+                onTaskChanged: (task) {
+                  setState(() => task.isDone = !task.isDone);
+                },
+              );
+            }),
+          ),
         ),
       ),
     );
