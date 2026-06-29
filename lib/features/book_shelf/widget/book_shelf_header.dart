@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/features/book_shelf/const/book_shelf_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BookShelfHeader extends StatelessWidget {
   const BookShelfHeader({
@@ -23,12 +24,11 @@ class BookShelfHeader extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Expanded(
+              Expanded(
                 child: Text(
                   'My books',
-                  style: TextStyle(
+                  style: GoogleFonts.merriweather(
                     color: BookShelfColors.text,
-                    fontFamily: 'serif',
                     fontSize: 23,
                     fontWeight: FontWeight.w700,
                   ),

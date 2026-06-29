@@ -58,9 +58,9 @@ class BookShelfSection extends StatelessWidget {
                     left: 3,
                     right: 3,
                     bottom: 0,
-                    height: 96,
+                    height: 80.h,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(4),
                       child: BackdropFilter(
                         filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
                         child: Container(
@@ -74,10 +74,8 @@ class BookShelfSection extends StatelessWidget {
                                 Color(0x10FFFFFF),
                               ],
                             ),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: BookShelfColors.glassBorder,
-                            ),
+                            borderRadius: BorderRadius.circular(4),
+
                             boxShadow: const [
                               BoxShadow(
                                 color: Color(0x26000000),

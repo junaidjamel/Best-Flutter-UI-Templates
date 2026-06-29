@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/features/book_shelf/const/book_shelf_colors.dart';
 import 'package:flutter_ui/features/book_shelf/widget/book_shelf_bottom_nav.dart';
 import 'package:flutter_ui/features/book_shelf/widget/book_shelf_header.dart';
 import 'package:flutter_ui/features/book_shelf/widget/book_shelf_section.dart';
 import 'package:flutter_ui/features/book_shelf/widget/category_filter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BookShelfView extends StatefulWidget {
   const BookShelfView({super.key});
@@ -20,7 +22,7 @@ class _BookShelfViewState extends State<BookShelfView> {
 
   static const _categories = [
     'All',
-    'Romance',
+
     'Fantasy',
     'Horror',
     'Classic',
@@ -34,20 +36,12 @@ class _BookShelfViewState extends State<BookShelfView> {
       category: 'Fantasy',
       bookCount: 8,
       coverUrls: [
-        'https://covers.openlibrary.org/b/isbn/9780063288348-L.jpg',
+        'https://i.pinimg.com/736x/43/06/53/430653e8eaa4f31269a5d28589c032a3.jpg',
         'https://covers.openlibrary.org/b/isbn/9781635575569-L.jpg',
         'https://covers.openlibrary.org/b/isbn/9780547928227-L.jpg',
       ],
     ),
-    BookShelfData(
-      category: 'Romance',
-      bookCount: 5,
-      coverUrls: [
-        'https://covers.openlibrary.org/b/isbn/9780141439518-L.jpg',
-        'https://covers.openlibrary.org/b/isbn/9780593336823-L.jpg',
-        'https://covers.openlibrary.org/b/isbn/9781538724736-L.jpg',
-      ],
-    ),
+
     BookShelfData(
       category: 'Classic',
       bookCount: 34,
@@ -202,7 +196,7 @@ class _BookShelfViewState extends State<BookShelfView> {
             children: [
               Text(
                 '${shelf.category} shelf',
-                style: const TextStyle(
+                style: GoogleFonts.merriweather(
                   color: BookShelfColors.text,
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
@@ -215,7 +209,7 @@ class _BookShelfViewState extends State<BookShelfView> {
               ),
               const SizedBox(height: 20),
               SizedBox(
-                height: 180,
+                height: 160.h,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: shelf.coverUrls.length,
@@ -224,7 +218,7 @@ class _BookShelfViewState extends State<BookShelfView> {
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
                       shelf.coverUrls[index],
-                      width: 116,
+                      width: 100.w,
                       fit: BoxFit.cover,
                       errorBuilder: (_, _, _) => const ColoredBox(
                         color: BookShelfColors.glass,
