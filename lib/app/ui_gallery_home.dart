@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/features/book_shelf/book_shelf_view.dart';
 import 'package:flutter_ui/features/todo/todo_view.dart';
 
 class UiGalleryHome extends StatelessWidget {
@@ -6,6 +7,6 @@ class UiGalleryHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TodoView();
+    return const BookShelfView();
   }
 }
