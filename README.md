@@ -54,6 +54,16 @@ A minimal functional todo app with light and dark theme.
 
 ---
 
+### 5. [Book Shelf UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/book_shelf)
+
+A modern bookshelf UI featuring category filters, searchable shelves, liquid-glass book stacks, and interactive shelf details.
+
+#### UI Reference
+
+![Book Shelf UI](assets/book_shelf/book_shelf_ui.png)
+
+---
+
 ## Upcoming UIs
 
 More Flutter UI templates will be added soon, including:
