@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/features/book_shelf/const/book_shelf_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,7 +38,7 @@ class BookShelfHeader extends StatelessWidget {
               IconButton(
                 onPressed: onSearchPressed,
                 icon: Icon(
-                  showSearch ? Icons.close_rounded : Icons.search_rounded,
+                  showSearch ? Icons.close_rounded : CupertinoIcons.search,
                   color: BookShelfColors.text,
                 ),
               ),
@@ -59,7 +60,11 @@ class BookShelfHeader extends StatelessWidget {
             curve: Curves.easeOut,
             child: showSearch
                 ? Padding(
-                    padding: const EdgeInsets.only(top: 6, right: 6),
+                    padding: const EdgeInsets.only(
+                      top: 15,
+                      right: 6,
+                      bottom: 15,
+                    ),
                     child: TextField(
                       controller: searchController,
                       autofocus: true,
@@ -71,11 +76,11 @@ class BookShelfHeader extends StatelessWidget {
                           color: BookShelfColors.mutedText,
                         ),
                         prefixIcon: const Icon(
-                          Icons.search_rounded,
+                          CupertinoIcons.search,
                           color: BookShelfColors.mutedText,
                         ),
                         filled: true,
-                        fillColor: BookShelfColors.surface,
+                        fillColor: Colors.black54,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
                           borderSide: BorderSide.none,
