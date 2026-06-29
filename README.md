@@ -20,7 +20,7 @@ A minimal dark Explore screen featuring object cards, category filters, and a mo
 
 #### UI Reference
 
-![Dark Explore UI](assets/three_d_object/ui_reference.png)
+<img src="assets/three_d_object/ui_reference.png" width="420" alt="Dark Explore UI" />
 
 ---
 
@@ -30,7 +30,7 @@ A modern coffee shop mobile UI featuring product filters, coffee cards, a detail
 
 #### UI Reference
 
-![Coffee Shop UI](assets/coffee_shope/ui_reference.jpg)
+<img src="assets/coffee_shope/ui_reference.jpg" width="420" alt="Coffee Shop UI" />
 
 ---
 
@@ -40,7 +40,7 @@ A clean event planner UI featuring animated summary cards, schedule items, image
 
 #### UI Reference
 
-![Event Animation UI](assets/event_animation/ui_reference.jpeg)
+<img src="assets/event_animation/ui_reference.jpeg" width="420" alt="Event Animation UI" />
 
 ---
 
@@ -50,7 +50,17 @@ A minimal functional todo app with light and dark theme.
 
 #### UI Reference
 
-![Minimal Todo UI](assets/todo/todo_ui.png)
+<img src="assets/todo/todo_ui.png" width="420" alt="Minimal Todo UI" />
+
+---
+
+### 5. [Book Shelf UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/book_shelf)
+
+A modern bookshelf UI featuring category filters, searchable shelves, liquid-glass book stacks, and interactive shelf details.
+
+#### UI Reference
+
+<img src="assets/book_shelf/book_shelf_ui.png" width="420" alt="Book Shelf UI" />
 
 ---
 
