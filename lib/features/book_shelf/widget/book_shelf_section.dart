@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/features/book_shelf/const/book_shelf_colors.dart';
 
 class BookShelfData {
@@ -37,15 +38,18 @@ class BookShelfSection extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   ...List.generate(shelf.coverUrls.length, (index) {
-                    final angles = [-.11, .02, .11];
+                    final leftPositions = [20.0, 50.0, 70.0];
+                    final topPositions = [60.0, 70.0, 90.0];
+                    final angles = [-.3, .02, .15];
                     return Positioned(
-                      top: index == 1 ? 18 : 28,
+                      left: leftPositions[index],
+                      top: topPositions[index],
                       child: Transform.rotate(
                         angle: angles[index],
                         child: _BookCover(
                           url: shelf.coverUrls[index],
-                          width: 80,
-                          height: 120,
+                          width: 70.w,
+                          height: 110.h,
                         ),
                       ),
                     );
@@ -58,16 +62,16 @@ class BookShelfSection extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
+                        filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
                         child: Container(
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                               colors: [
-                                Color(0x2EFFFFFF),
-                                Color(0x12FFFFFF),
-                                Color(0x20FFFFFF),
+                                Color(0x18FFFFFF),
+                                Color(0x06FFFFFF),
+                                Color(0x10FFFFFF),
                               ],
                             ),
                             borderRadius: BorderRadius.circular(10),
@@ -101,16 +105,25 @@ class BookShelfSection extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              const Padding(
-                                padding: EdgeInsets.all(6),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    _ShelfPin(),
-                                    Spacer(),
-                                    _ShelfPin(),
-                                  ],
-                                ),
+                              const Positioned(
+                                left: 6,
+                                top: 6,
+                                child: _ShelfPin(),
+                              ),
+                              const Positioned(
+                                right: 6,
+                                top: 6,
+                                child: _ShelfPin(),
+                              ),
+                              const Positioned(
+                                left: 6,
+                                bottom: 6,
+                                child: _ShelfPin(),
+                              ),
+                              const Positioned(
+                                right: 6,
+                                bottom: 6,
+                                child: _ShelfPin(),
                               ),
                             ],
                           ),
