@@ -80,7 +80,7 @@ class BookShelfHeader extends StatelessWidget {
                           color: BookShelfColors.mutedText,
                         ),
                         filled: true,
-                        fillColor: Colors.black54,
+                        fillColor: BookShelfColors.searchField,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
                           borderSide: BorderSide.none,

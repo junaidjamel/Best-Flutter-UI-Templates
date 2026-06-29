@@ -3,23 +3,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/features/book_shelf/const/book_shelf_colors.dart';
-
-class BookShelfData {
-  const BookShelfData({
-    required this.category,
-    required this.bookCount,
-    required this.coverUrls,
-  });
-
-  final String category;
-  final int bookCount;
-  final List<String> coverUrls;
-}
+import 'package:flutter_ui/features/book_shelf/model/book_shelf.dart';
 
 class BookShelfSection extends StatelessWidget {
   const BookShelfSection({required this.shelf, required this.onTap, super.key});
 
-  final BookShelfData shelf;
+  final BookShelf shelf;
   final VoidCallback onTap;
 
   @override
@@ -27,9 +16,9 @@ class BookShelfSection extends StatelessWidget {
     return Semantics(
       button: true,
       label: '${shelf.category}, ${shelf.bookCount} books',
-      child: InkWell(
+      child: GestureDetector(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
+
         child: Column(
           children: [
             Expanded(
@@ -37,98 +26,8 @@ class BookShelfSection extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 clipBehavior: Clip.none,
                 children: [
-                  ...List.generate(shelf.coverUrls.length, (index) {
-                    final leftPositions = [20.0, 50.0, 70.0];
-                    final topPositions = [60.0, 70.0, 90.0];
-                    final angles = [-.3, .02, .15];
-                    return Positioned(
-                      left: leftPositions[index],
-                      top: topPositions[index],
-                      child: Transform.rotate(
-                        angle: angles[index],
-                        child: _BookCover(
-                          url: shelf.coverUrls[index],
-                          width: 70.w,
-                          height: 110.h,
-                        ),
-                      ),
-                    );
-                  }),
-                  Positioned(
-                    left: 3,
-                    right: 3,
-                    bottom: 0,
-                    height: 80.h,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                Color(0x18FFFFFF),
-                                Color(0x06FFFFFF),
-                                Color(0x10FFFFFF),
-                              ],
-                            ),
-                            borderRadius: BorderRadius.circular(4),
-
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color(0x26000000),
-                                blurRadius: 20,
-                                offset: Offset(0, 8),
-                              ),
-                            ],
-                          ),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                top: 0,
-                                left: 14,
-                                right: 14,
-                                child: Container(
-                                  height: 1,
-                                  decoration: const BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.transparent,
-                                        Color(0xA6FFFFFF),
-                                        Colors.transparent,
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const Positioned(
-                                left: 6,
-                                top: 6,
-                                child: _ShelfPin(),
-                              ),
-                              const Positioned(
-                                right: 6,
-                                top: 6,
-                                child: _ShelfPin(),
-                              ),
-                              const Positioned(
-                                left: 6,
-                                bottom: 6,
-                                child: _ShelfPin(),
-                              ),
-                              const Positioned(
-                                right: 6,
-                                bottom: 6,
-                                child: _ShelfPin(),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  _BookFan(coverUrls: shelf.coverUrls),
+                  const _GlassShelf(),
                 ],
               ),
             ),
@@ -152,6 +51,128 @@ class BookShelfSection extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _BookFan extends StatelessWidget {
+  const _BookFan({required this.coverUrls});
+
+  static const _leftPositions = [20.0, 50.0, 70.0];
+  static const _topPositions = [60.0, 70.0, 90.0];
+  static const _angles = [-.3, .02, .15];
+
+  final List<String> coverUrls;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned.fill(
+      child: Stack(
+        children: List.generate(coverUrls.length, (index) {
+          return Positioned(
+            left: _leftPositions[index],
+            top: _topPositions[index],
+            child: Transform.rotate(
+              angle: _angles[index],
+              child: _BookCover(
+                url: coverUrls[index],
+                width: 70.w,
+                height: 110.h,
+              ),
+            ),
+          );
+        }),
+      ),
+    );
+  }
+}
+
+class _GlassShelf extends StatelessWidget {
+  const _GlassShelf();
+
+  static const _radius = 4.0;
+  static const _pinOffset = 6.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      left: 3,
+      right: 3,
+      bottom: 0,
+      height: 80.h,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(_radius),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: BookShelfColors.glassGradient,
+              ),
+              borderRadius: BorderRadius.circular(_radius),
+              boxShadow: const [
+                BoxShadow(
+                  color: BookShelfColors.glassShadow,
+                  blurRadius: 20,
+                  offset: Offset(0, 8),
+                ),
+              ],
+            ),
+            child: const Stack(
+              children: [
+                _GlassHighlight(),
+                Positioned(
+                  left: _pinOffset,
+                  top: _pinOffset,
+                  child: _ShelfPin(),
+                ),
+                Positioned(
+                  right: _pinOffset,
+                  top: _pinOffset,
+                  child: _ShelfPin(),
+                ),
+                Positioned(
+                  left: _pinOffset,
+                  bottom: _pinOffset,
+                  child: _ShelfPin(),
+                ),
+                Positioned(
+                  right: _pinOffset,
+                  bottom: _pinOffset,
+                  child: _ShelfPin(),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _GlassHighlight extends StatelessWidget {
+  const _GlassHighlight();
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 0,
+      left: 14,
+      right: 14,
+      child: Container(
+        height: 1,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.transparent,
+              BookShelfColors.glassHighlight,
+              Colors.transparent,
+            ],
+          ),
         ),
       ),
     );
@@ -205,9 +226,13 @@ class _ShelfPin extends StatelessWidget {
       decoration: BoxDecoration(
         color: BookShelfColors.text.withValues(alpha: .78),
         shape: BoxShape.circle,
-        border: Border.all(color: Colors.black26),
+        border: Border.all(color: BookShelfColors.pinBorder),
       ),
-      child: const Icon(Icons.close_rounded, size: 5, color: Colors.black54),
+      child: const Icon(
+        Icons.close_rounded,
+        size: 5,
+        color: BookShelfColors.pinIcon,
+      ),
     );
   }
 }
