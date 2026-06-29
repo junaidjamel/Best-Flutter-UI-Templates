@@ -37,16 +37,15 @@ class BookShelfSection extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   ...List.generate(shelf.coverUrls.length, (index) {
-                    final offsets = [-30.0, 0.0, 30.0];
                     final angles = [-.11, .02, .11];
                     return Positioned(
-                      top: index == 1 ? 0 : 12,
+                      top: index == 1 ? 18 : 28,
                       child: Transform.rotate(
                         angle: angles[index],
                         child: _BookCover(
                           url: shelf.coverUrls[index],
-                          width: 88,
-                          height: 132,
+                          width: 80,
+                          height: 120,
                         ),
                       ),
                     );
@@ -55,36 +54,65 @@ class BookShelfSection extends StatelessWidget {
                     left: 3,
                     right: 3,
                     bottom: 0,
-                    height: 82,
+                    height: 96,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(10),
                       child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                        child: DecoratedBox(
+                        filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
+                        child: Container(
                           decoration: BoxDecoration(
-                            color: BookShelfColors.glass,
-                            borderRadius: BorderRadius.circular(8),
+                            gradient: const LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color(0x2EFFFFFF),
+                                Color(0x12FFFFFF),
+                                Color(0x20FFFFFF),
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(10),
                             border: Border.all(
                               color: BookShelfColors.glassBorder,
                             ),
                             boxShadow: const [
                               BoxShadow(
-                                color: Color(0x33000000),
-                                blurRadius: 18,
+                                color: Color(0x26000000),
+                                blurRadius: 20,
                                 offset: Offset(0, 8),
                               ),
                             ],
                           ),
-                          child: const Padding(
-                            padding: EdgeInsets.all(6),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _ShelfPin(),
-                                Spacer(),
-                                _ShelfPin(),
-                              ],
-                            ),
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                top: 0,
+                                left: 14,
+                                right: 14,
+                                child: Container(
+                                  height: 1,
+                                  decoration: const BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Colors.transparent,
+                                        Color(0xA6FFFFFF),
+                                        Colors.transparent,
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(6),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    _ShelfPin(),
+                                    Spacer(),
+                                    _ShelfPin(),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

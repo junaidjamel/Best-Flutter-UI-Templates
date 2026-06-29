@@ -26,23 +26,30 @@ class CategoryFilter extends StatelessWidget {
           final category = categories[index];
           final isSelected = category == selectedCategory;
 
-          return ChoiceChip(
-            showCheckmark: false,
-            selected: isSelected,
-            onSelected: (_) => onSelected(category),
-            label: Text(category),
-            labelStyle: TextStyle(
-              color: isSelected
-                  ? BookShelfColors.selectedChipText
-                  : BookShelfColors.mutedText,
-              fontSize: 11,
+          return InkWell(
+            onTap: () => onSelected(category),
+            borderRadius: BorderRadius.circular(20),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 180),
+              padding: const EdgeInsets.symmetric(horizontal: 13),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: isSelected
+                    ? BookShelfColors.selectedChip
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                category,
+                style: TextStyle(
+                  color: isSelected
+                      ? BookShelfColors.selectedChipText
+                      : BookShelfColors.mutedText,
+                  fontSize: 11,
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                ),
+              ),
             ),
-            selectedColor: BookShelfColors.selectedChip,
-            backgroundColor: Colors.transparent,
-            side: BorderSide.none,
-            shape: const StadiumBorder(),
-            padding: const EdgeInsets.symmetric(horizontal: 7),
-            visualDensity: VisualDensity.compact,
           );
         },
       ),
