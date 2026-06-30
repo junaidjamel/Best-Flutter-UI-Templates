@@ -64,6 +64,17 @@ A modern bookshelf UI featuring category filters, searchable shelves, liquid-gla
 
 ---
 
+### 6. [Article App UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/article_app)
+
+A clean article App UI featuring curated articles, market insights, stock overviews, and a modern dashboard with a minimal reading experience.
+
+#### UI Reference
+
+<img src="assets/article/article_ui.png"
+width="420" alt="Book Shelf UI" />
+
+---
+
 ## Upcoming UIs
 
 More Flutter UI templates will be added soon, including:
