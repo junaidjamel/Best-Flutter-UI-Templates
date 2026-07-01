@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_ui/features/article_app/const/article_color.dart';
 import 'package:flutter_ui/features/article_app/widget/article_bottom_nav.dart';
+import 'package:flutter_ui/features/article_app/widget/article_feed_page.dart';
 import 'package:flutter_ui/features/article_app/widget/article_header.dart';
 import 'package:flutter_ui/features/article_app/widget/discover_page.dart';
-import 'package:flutter_ui/features/article_app/widget/news_page.dart';
 
 class ArticleView extends StatefulWidget {
   const ArticleView({super.key});
@@ -34,7 +34,9 @@ class _ArticleViewState extends State<ArticleView> {
                 onSettings: () {},
               ),
               Expanded(
-                child: isArticles ? const NewsPage() : const DiscoverPage(),
+                child: isArticles
+                    ? const ArticleFeedPage()
+                    : const DiscoverPage(),
               ),
             ],
           ),

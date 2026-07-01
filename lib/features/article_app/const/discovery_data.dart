@@ -7,7 +7,7 @@ class ArticleCategory {
   final List<ArticleData> articles;
 }
 
-const discoveryCategories = [
+const List<ArticleCategory> discoveryCategories = [
   ArticleCategory(
     name: 'For You',
     articles: [

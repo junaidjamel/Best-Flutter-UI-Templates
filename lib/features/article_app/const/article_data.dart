@@ -18,7 +18,7 @@ const articleDetailContent =
     'work helps people use them thoughtfully and prepare for the changes they '
     'may bring.';
 
-const articlePosts = [
+const List<ArticleData> articlePosts = [
   ArticleData(
     title: 'How generative AI is changing creative work',
     description:

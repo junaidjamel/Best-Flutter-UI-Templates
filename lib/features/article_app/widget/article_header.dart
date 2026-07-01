@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/features/article_app/const/article_color.dart';
-import 'package:flutter_ui/features/article_app/widget/back_button.dart';
+import 'package:flutter_ui/features/article_app/widget/round_icon_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ArticleHeader extends StatelessWidget {
@@ -25,7 +25,7 @@ class ArticleHeader extends StatelessWidget {
       child: Row(
         children: [
           if (showBackButton)
-            RoundButton(icon: Icons.arrow_back_rounded, onTap: onBack)
+            RoundIconButton(icon: Icons.arrow_back_rounded, onTap: onBack)
           else
             SizedBox(width: 44.w),
           Expanded(
@@ -39,7 +39,7 @@ class ArticleHeader extends StatelessWidget {
               ),
             ),
           ),
-          RoundButton(icon: Icons.settings_outlined, onTap: onSettings),
+          RoundIconButton(icon: Icons.settings_outlined, onTap: onSettings),
         ],
       ),
     );
