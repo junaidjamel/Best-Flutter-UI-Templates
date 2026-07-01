@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/features/article_app/const/article_color.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ArticleHeader extends StatelessWidget {
   const ArticleHeader({
@@ -30,11 +31,10 @@ class ArticleHeader extends StatelessWidget {
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.lora(
                 color: ArticleColors.primary,
-                fontSize: 24.sp,
+                fontSize: 28.sp,
                 fontWeight: FontWeight.w800,
-                letterSpacing: -.4,
               ),
             ),
           ),

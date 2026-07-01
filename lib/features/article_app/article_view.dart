@@ -28,7 +28,7 @@ class _ArticleViewState extends State<ArticleView> {
           child: Column(
             children: [
               ArticleHeader(
-                title: isArticles ? 'ARTICLES' : 'MARKETS',
+                title: isArticles ? 'Articles' : 'MARKETS',
                 showBackButton: isArticles,
                 onBack: () => Navigator.maybePop(context),
                 onSettings: () {},
