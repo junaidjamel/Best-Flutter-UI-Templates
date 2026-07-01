@@ -24,23 +24,16 @@ const List<ArticleData> articlePosts = [
     description:
         'New AI tools are helping designers, writers, and developers move from early ideas to polished work faster.',
     imageUrl:
-        'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=85',
+        'https://i.pinimg.com/1200x/e2/36/f3/e236f32a9d24460389e1df94e75560b6.jpg',
     content: articleDetailContent,
   ),
-  ArticleData(
-    title: 'The next generation of smarter robots',
-    description:
-        'Advances in machine learning are enabling robots to understand their surroundings and handle complex tasks.',
-    imageUrl:
-        'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=85',
-    content: articleDetailContent,
-  ),
+
   ArticleData(
     title: 'Why AI assistants are becoming more personal',
     description:
         'Modern assistants can understand context, organize daily work, and provide more useful responses.',
     imageUrl:
-        'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=85',
+        'https://i.pinimg.com/736x/55/58/fe/5558fe79c2a623add528b652991c233f.jpg',
     content: articleDetailContent,
   ),
   ArticleData(
@@ -56,17 +49,10 @@ const List<ArticleData> articlePosts = [
     description:
         'AI systems are helping doctors analyze medical images, discover treatments, and identify health risks earlier.',
     imageUrl:
-        'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1200&q=85',
+        'https://i.pinimg.com/1200x/15/53/dd/1553ddc683da7c40cc23dda2f470df55.jpg',
     content: articleDetailContent,
   ),
-  ArticleData(
-    title: 'The technology powering tomorrow’s smart cities',
-    description:
-        'Connected sensors and intelligent software are helping cities reduce traffic, energy use, and waste.',
-    imageUrl:
-        'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85',
-    content: articleDetailContent,
-  ),
+
   ArticleData(
     title: 'How quantum computing could transform technology',
     description:
