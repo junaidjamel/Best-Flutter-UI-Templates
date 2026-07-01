@@ -12,41 +12,43 @@ const List<ArticleCategory> discoveryCategories = [
     name: 'For You',
     articles: [
       ArticleData(
+        title: 'Why personal websites are making a comeback',
+        description:
+            'Creators are building independent spaces where they can publish ideas without chasing an algorithm.',
+        imageUrl:
+            'https://i.pinimg.com/1200x/a4/7b/d4/a47bd47f1fd06ad72da62c7cb1fee1e9.jpg',
+        content:
+            'A personal website offers ownership, flexibility, and a lasting home for creative work. Better tools are making these spaces easier for anyone to design and maintain.',
+      ),
+      ArticleData(
         title: 'Seven small technologies quietly shaping daily life',
         description:
             'From smarter batteries to private on-device AI, useful innovation is becoming almost invisible.',
         imageUrl:
-            'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=85',
+            'https://i.pinimg.com/1200x/ea/23/26/ea23267abb5944ef3ccc876550c03094.jpg',
         content:
             'The most meaningful technology is not always the loudest. Small improvements in devices, software, and connectivity are steadily changing how people work and live.',
       ),
+
       ArticleData(
-        title: 'A practical guide to building better digital habits',
+        title: 'Can technology make remote work feel more human?',
         description:
-            'Simple ways to make your devices feel calmer, more focused, and genuinely helpful.',
+            'Teams are experimenting with better tools for collaboration, focus, and meaningful connection.',
         imageUrl:
-            'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=900&q=85',
+            'https://i.pinimg.com/736x/34/bb/2d/34bb2dfcfc5a97d705236f280330211d.jpg',
         content:
-            'Technology should support attention rather than constantly compete for it. A few thoughtful settings and routines can make everyday digital tools much easier to live with.',
+            'Remote work is about more than video meetings. Thoughtful technology can help teams share context, protect focused time, and maintain a genuine sense of belonging.',
       ),
       ArticleData(
         title: 'What comes after the smartphone?',
         description:
             'Wearables, spatial interfaces, and ambient computing are competing to become the next essential platform.',
         imageUrl:
-            'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=85',
+            'https://i.pinimg.com/1200x/94/2a/3a/942a3aabf56e9996c899f964e9a09087.jpg',
         content:
             'The next major computing platform may not replace the phone overnight. It is more likely to appear gradually through connected devices that understand context.',
       ),
-      ArticleData(
-        title: 'Why personal websites are making a comeback',
-        description:
-            'Creators are building independent spaces where they can publish ideas without chasing an algorithm.',
-        imageUrl:
-            'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=85',
-        content:
-            'A personal website offers ownership, flexibility, and a lasting home for creative work. Better tools are making these spaces easier for anyone to design and maintain.',
-      ),
+
       ArticleData(
         title: 'The quiet revolution happening inside batteries',
         description:
@@ -56,73 +58,38 @@ const List<ArticleCategory> discoveryCategories = [
         content:
             'Battery innovation affects everything from phones to electric vehicles. Researchers are improving safety, charging speed, and energy density without changing how people use their devices.',
       ),
-      ArticleData(
-        title: 'Can technology make remote work feel more human?',
-        description:
-            'Teams are experimenting with better tools for collaboration, focus, and meaningful connection.',
-        imageUrl:
-            'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85',
-        content:
-            'Remote work is about more than video meetings. Thoughtful technology can help teams share context, protect focused time, and maintain a genuine sense of belonging.',
-      ),
     ],
   ),
   ArticleCategory(
     name: 'AI',
     articles: [
       ArticleData(
-        title: 'Small AI models are having a big moment',
-        description:
-            'Efficient models can now run directly on phones and laptops without sending every request to the cloud.',
-        imageUrl:
-            'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=85',
-        content:
-            'Smaller models improve speed, privacy, and reliability. They are making useful artificial intelligence possible in places where an internet connection is limited.',
-      ),
-      ArticleData(
         title: 'How to collaborate with AI without losing your voice',
         description:
             'The best results come from treating AI as a thinking partner rather than an automatic answer machine.',
         imageUrl:
-            'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=85',
+            'https://i.pinimg.com/736x/00/ae/70/00ae708620505dac5f1f51cbaa3043e3.jpg',
         content:
             'Strong AI-assisted work still depends on human judgment. Clear direction, careful editing, and original perspective are what turn a generated draft into meaningful work.',
       ),
+      ArticleData(
+        title: 'Small AI models are having a big moment',
+        description:
+            'Efficient models can now run directly on phones and laptops without sending every request to the cloud.',
+        imageUrl:
+            'https://i.pinimg.com/736x/80/7e/86/807e86ec3335dcaeb832aa81e8ff07ea.jpg',
+        content:
+            'Smaller models improve speed, privacy, and reliability. They are making useful artificial intelligence possible in places where an internet connection is limited.',
+      ),
+
       ArticleData(
         title: 'Why transparent AI matters',
         description:
             'Researchers are finding clearer ways to explain how intelligent systems reach important decisions.',
         imageUrl:
-            'https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=900&q=85',
+            'https://i.pinimg.com/236x/58/8a/7e/588a7e030fe4e9186ace61274480869c.jpg',
         content:
             'People need to understand when and why automated systems affect them. Transparency makes it easier to evaluate errors, reduce bias, and build trust.',
-      ),
-      ArticleData(
-        title: 'How AI is learning to understand video',
-        description:
-            'Multimodal models can now follow actions, scenes, and spoken context across moving images.',
-        imageUrl:
-            'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=900&q=85',
-        content:
-            'Video understanding gives AI a richer view of the world. It could improve accessibility, education, creative editing, and the way large media libraries are searched.',
-      ),
-      ArticleData(
-        title: 'AI agents are moving from answers to actions',
-        description:
-            'New systems can plan tasks, use software tools, and complete multi-step digital work.',
-        imageUrl:
-            'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=900&q=85',
-        content:
-            'AI agents promise to reduce repetitive work by combining reasoning with practical tools. Reliability and clear user control will determine how useful these systems become.',
-      ),
-      ArticleData(
-        title: 'The growing role of synthetic data in AI',
-        description:
-            'Generated examples are helping researchers train models when real-world information is limited.',
-        imageUrl:
-            'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=85',
-        content:
-            'Synthetic data can fill important gaps while protecting sensitive information. Its value depends on quality, diversity, and careful checks against real-world behavior.',
       ),
     ],
   ),
@@ -134,7 +101,7 @@ const List<ArticleCategory> discoveryCategories = [
         description:
             'A new wave of devices is focusing on repairability, simplicity, and long-term usefulness.',
         imageUrl:
-            'https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=85',
+            'https://i.pinimg.com/736x/7c/00/0d/7c000daefc75abfd45da7d13de879423.jpg',
         content:
             'Good hardware should age gracefully. More companies are exploring modular parts, longer software support, and designs that solve one problem especially well.',
       ),
@@ -143,7 +110,7 @@ const List<ArticleCategory> discoveryCategories = [
         description:
             'Lighter designs and useful AI features are giving wearable displays another chance.',
         imageUrl:
-            'https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=900&q=85',
+            'https://i.pinimg.com/736x/03/bd/5e/03bd5e4a9d87cd961c3b610b51ea8459.jpg',
         content:
             'Smart glasses are becoming less experimental and more practical. The winning products will need to balance helpful features with comfort, privacy, and battery life.',
       ),
@@ -161,7 +128,7 @@ const List<ArticleCategory> discoveryCategories = [
         description:
             'New layouts, switches, and materials are turning a basic computer tool into a personal object.',
         imageUrl:
-            'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=900&q=85',
+            'https://i.pinimg.com/1200x/86/f7/bc/86f7bc43ac398dec7add867b9972991f.jpg',
         content:
             'Mechanical keyboards combine function with personal expression. Enthusiasts can now choose every detail, from sound and feel to layout and visual design.',
       ),
