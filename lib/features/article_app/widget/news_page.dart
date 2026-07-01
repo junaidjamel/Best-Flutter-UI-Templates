@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:flutter_ui/features/article_app/const/article_color.dart';
 import 'package:flutter_ui/features/article_app/const/article_data.dart';
+import 'package:flutter_ui/features/article_app/widget/article_detail_page.dart';
 import 'package:flutter_ui/features/article_app/widget/network_article_image.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NewsPage extends StatelessWidget {
   const NewsPage({super.key});
@@ -15,8 +15,7 @@ class NewsPage extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(20.w, 2.h, 20.w, 22.h),
       itemCount: articlePosts.length,
       separatorBuilder: (_, _) => 20.vSpace,
-      itemBuilder: (context, index) =>
-          NewsCard(article: articlePosts[index]),
+      itemBuilder: (context, index) => NewsCard(article: articlePosts[index]),
     );
   }
 }
@@ -29,7 +28,7 @@ class NewsCard extends StatelessWidget {
   void _openArticle(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (_) => _ArticleDetail(article: article),
+        builder: (_) => ArticleDetailPage(article: article),
       ),
     );
   }
@@ -118,60 +117,6 @@ class NewsCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _ArticleDetail extends StatelessWidget {
-  const _ArticleDetail({required this.article});
-
-  final ArticleData article;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ArticleColors.background,
-      appBar: AppBar(
-        backgroundColor: ArticleColors.background,
-        title: Text(
-          'ARTICLE',
-          style: GoogleFonts.lora(
-            color: ArticleColors.primary,
-            fontSize: 28.sp,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      body: ListView(
-        padding: EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 32.h),
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(24.r),
-            child: SizedBox(
-              height: 230.h,
-              child: NetworkArticleImage(
-                url: article.imageUrl,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          22.vSpace,
-          Text(
-            article.title,
-            style: TextStyle(
-              fontSize: 30.sp,
-              height: 1.08,
-              fontWeight: FontWeight.w800,
-            ),
-          ),
-          14.vSpace,
-          Text(
-            '${article.description}\n\n${article.content}',
-            style: TextStyle(fontSize: 17.sp, height: 1.55),
-          ),
-        ],
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_ui/features/article_app/const/article_color.dart';
 import 'package:flutter_ui/features/article_app/widget/article_bottom_nav.dart';
 import 'package:flutter_ui/features/article_app/widget/article_header.dart';
-import 'package:flutter_ui/features/article_app/widget/markets_page.dart';
+import 'package:flutter_ui/features/article_app/widget/discover_page.dart';
 import 'package:flutter_ui/features/article_app/widget/news_page.dart';
 
 class ArticleView extends StatefulWidget {
@@ -28,13 +28,13 @@ class _ArticleViewState extends State<ArticleView> {
           child: Column(
             children: [
               ArticleHeader(
-                title: isArticles ? 'Articles' : 'MARKETS',
+                title: isArticles ? 'Articles' : 'Discover',
                 showBackButton: isArticles,
                 onBack: () => Navigator.maybePop(context),
                 onSettings: () {},
               ),
               Expanded(
-                child: isArticles ? const NewsPage() : const MarketsPage(),
+                child: isArticles ? const NewsPage() : const DiscoverPage(),
               ),
             ],
           ),

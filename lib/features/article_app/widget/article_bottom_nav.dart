@@ -29,7 +29,7 @@ class ArticleBottomNav extends StatelessWidget {
                 onTap: () => onSelected(0),
               ),
               _NavItem(
-                icon: Icons.trending_up_rounded,
+                icon: Icons.explore_outlined,
                 selected: selectedIndex == 1,
                 onTap: () => onSelected(1),
               ),
