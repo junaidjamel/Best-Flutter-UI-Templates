@@ -21,7 +21,7 @@ class SubscriptionIcon extends StatelessWidget {
       height: size.w,
       padding: EdgeInsets.all(10.r),
       decoration: BoxDecoration(
-        color: SubscriptionTrackerColors.background,
+        color: SubscriptionTrackerColors.background.withValues(alpha: .5),
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Image.network(
