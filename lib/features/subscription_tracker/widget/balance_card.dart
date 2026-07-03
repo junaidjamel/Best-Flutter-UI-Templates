@@ -27,7 +27,7 @@ class BalanceCard extends StatelessWidget {
             children: [
               Text(
                 'Balance',
-                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
               ),
               const Spacer(),
               Switch.adaptive(
@@ -57,7 +57,7 @@ class BalanceCard extends StatelessWidget {
               const Spacer(),
               Text(
                 '07/37',
-                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w700),
+                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700),
               ),
             ],
           ),
