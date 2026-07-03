@@ -71,7 +71,18 @@ A clean article App UI featuring curated articles, market insights, stock overvi
 #### UI Reference
 
 <img src="assets/article/article_ui.png"
-width="420" alt="Book Shelf UI" />
+width="420" alt="Article App UI" />
+
+---
+
+### 7. [Subscription Tracker App UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/subscription_tracker)
+
+A clean article App UI featuring curated articles, market insights, stock overviews, and a modern dashboard with a minimal reading experience.
+
+#### UI Reference
+
+<img src="assets/subscription_tracker/subscription_ui.png"
+width="420" alt="Subscription Tracker UI" />
 
 ---
 
