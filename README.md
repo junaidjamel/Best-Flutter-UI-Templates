@@ -2,13 +2,23 @@
 
 A collection of beautiful, production-ready Flutter UI templates and animations built with Flutter and Dart.
 
+## ❤️ How Can You Support This Project?
+
+This repository is completely free and open source.
+
+If you find these Flutter UI templates useful, here's how you can help:
+
+⭐ **Star this repository** to help more developers discover it.
+
+☕ **Support me on Patreon** to help me create more production ready Flutter UI templates and maintain this project.
+
+Every star and every contribution means a lot. Thank you for your support!
+
 <p align="left">
   <a href="https://www.patreon.com/c/junaidjameel/membership">
-    <img src="assets/patreon.png" width="280" />
+    <img src="assets/patreon.png" width="280" alt="Support on Patreon" />
   </a>
 </p>
-
-Completely free and open source. New UI templates are added regularly.
 
 ---
 
