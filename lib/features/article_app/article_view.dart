@@ -41,6 +41,7 @@ class _ArticleViewState extends State<ArticleView> {
             ],
           ),
         ),
+
         bottomNavigationBar: ArticleBottomNav(
           selectedIndex: _selectedIndex,
           onSelected: (index) => setState(() => _selectedIndex = index),

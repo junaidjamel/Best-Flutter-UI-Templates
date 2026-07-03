@@ -62,6 +62,7 @@ class ArticleCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.r),
                 child: SizedBox(
                   height: 174.h,
+
                   child: NetworkArticleImage(
                     url: article.imageUrl,
                     fit: BoxFit.cover,
