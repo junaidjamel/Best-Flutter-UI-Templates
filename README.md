@@ -77,7 +77,7 @@ width="420" alt="Article App UI" />
 
 ### 7. [Subscription Tracker App UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/subscription_tracker)
 
-A clean article App UI featuring curated articles, market insights, stock overviews, and a modern dashboard with a minimal reading experience.
+Minimal Subscription Tracker app.
 
 #### UI Reference
 
