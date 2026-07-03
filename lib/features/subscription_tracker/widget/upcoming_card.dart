@@ -36,9 +36,9 @@ class UpcomingCard extends StatelessWidget {
                 Row(
                   children: [
                     SubscriptionIcon(
-                      imageUrl: subscription.iconUrl,
+                      imageUrl: subscription.icon,
                       fallback: subscription.name,
-                      size: 36,
+                      size: 45.sp,
                     ),
                     const Spacer(),
                     Text(

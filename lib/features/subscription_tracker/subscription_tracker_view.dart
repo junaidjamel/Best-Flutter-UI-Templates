@@ -82,9 +82,9 @@ class _SubscriptionTrackerViewState extends State<SubscriptionTrackerView> {
                 itemCount: subscriptions.length,
                 separatorBuilder: (_, _) => 10.hSpace,
                 itemBuilder: (context, index) {
-                  final subscription = subscriptions[index];
+                  final reversedIndex = subscriptions.length - 1 - index;
                   return UpcomingCard(
-                    subscription: subscription,
+                    subscription: subscriptions[reversedIndex],
                     onTap: _openDetails,
                   );
                 },
@@ -124,7 +124,7 @@ class _SectionHeader extends StatelessWidget {
         Expanded(
           child: Text(
             title,
-            style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w700),
+            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w900),
           ),
         ),
         OutlinedButton(
@@ -133,7 +133,7 @@ class _SectionHeader extends StatelessWidget {
             foregroundColor: SubscriptionTrackerColors.ink,
             side: const BorderSide(color: SubscriptionTrackerColors.border),
             visualDensity: VisualDensity.compact,
-            textStyle: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600),
+            textStyle: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600),
           ),
           child: const Text('View All'),
         ),

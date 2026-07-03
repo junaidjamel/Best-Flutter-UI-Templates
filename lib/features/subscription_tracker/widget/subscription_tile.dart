@@ -30,7 +30,7 @@ class SubscriptionTile extends StatelessWidget {
           child: Row(
             children: [
               SubscriptionIcon(
-                imageUrl: subscription.iconUrl,
+                imageUrl: subscription.icon,
                 fallback: subscription.name,
                 size: compact ? 40 : 46,
               ),
@@ -54,7 +54,7 @@ class SubscriptionTile extends StatelessWidget {
                     Text(
                       compact ? subscription.plan : subscription.nextPayment,
                       style: TextStyle(
-                        color: SubscriptionTrackerColors.muted,
+                        color: SubscriptionTrackerColors.ink,
                         fontSize: 11.sp,
                       ),
                     ),
@@ -69,7 +69,7 @@ class SubscriptionTile extends StatelessWidget {
                   Text(
                     '\$${subscription.price.toStringAsFixed(2)}',
                     style: TextStyle(
-                      fontSize: 13.sp,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -78,7 +78,7 @@ class SubscriptionTile extends StatelessWidget {
                     subscription.billingPeriod,
                     style: TextStyle(
                       color: SubscriptionTrackerColors.muted,
-                      fontSize: 10.sp,
+                      fontSize: 12.sp,
                     ),
                   ),
                 ],

@@ -15,7 +15,7 @@ class SubscriptionDetailView extends StatefulWidget {
 
 class _SubscriptionDetailViewState extends State<SubscriptionDetailView> {
   late List<Subscription> _subscriptions;
-  int? _expandedIndex;
+  int? _expandedIndex = 1;
   int _animationRequest = 0;
 
   @override
