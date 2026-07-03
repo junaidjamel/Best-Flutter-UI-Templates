@@ -1,33 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:flutter_ui/features/subscription_tracker/const/subscription_tracker_colors.dart';
 import 'package:flutter_ui/features/subscription_tracker/model/subscription.dart';
 import 'package:flutter_ui/features/subscription_tracker/widget/detail_subscription_card.dart';
-import 'package:flutter_ui/features/subscription_tracker/widget/subscription_tile.dart';
 
 class SubscriptionDetailView extends StatefulWidget {
-  const SubscriptionDetailView({
-    required this.subscriptions,
-    required this.selected,
-    super.key,
-  });
+  const SubscriptionDetailView({required this.subscriptions, super.key});
 
   final List<Subscription> subscriptions;
-  final Subscription selected;
 
   @override
   State<SubscriptionDetailView> createState() => _SubscriptionDetailViewState();
 }
 
 class _SubscriptionDetailViewState extends State<SubscriptionDetailView> {
-  late Subscription _selected;
   late List<Subscription> _subscriptions;
+  int? _expandedIndex;
+  int _animationRequest = 0;
 
   @override
   void initState() {
     super.initState();
-    _selected = widget.selected;
     _subscriptions = List.of(widget.subscriptions);
   }
 
@@ -37,10 +30,27 @@ class _SubscriptionDetailViewState extends State<SubscriptionDetailView> {
       ..showSnackBar(SnackBar(content: Text('$message settings opened')));
   }
 
-  void _cancelSubscription() {
+  Future<void> _toggleTile(int index) async {
+    final request = ++_animationRequest;
+
+    if (_expandedIndex == index) {
+      setState(() => _expandedIndex = null);
+      return;
+    }
+
+    if (_expandedIndex != null) {
+      setState(() => _expandedIndex = null);
+      await Future<void>.delayed(const Duration(milliseconds: 220));
+      if (!mounted || request != _animationRequest) return;
+    }
+
+    setState(() => _expandedIndex = index);
+  }
+
+  void _cancelSubscription(int index) {
     setState(() {
-      _subscriptions.remove(_selected);
-      if (_subscriptions.isNotEmpty) _selected = _subscriptions.first;
+      _subscriptions.removeAt(index);
+      _expandedIndex = null;
     });
 
     ScaffoldMessenger.of(
@@ -80,26 +90,18 @@ class _SubscriptionDetailViewState extends State<SubscriptionDetailView> {
               )
             : ListView(
                 padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 28.h),
-                children: [
-                  DetailSubscriptionCard(
-                    subscription: _selected,
-                    onCancel: _cancelSubscription,
-                    onAction: _showMessage,
-                  ),
-                  12.vSpace,
-                  ..._subscriptions
-                      .where((item) => item != _selected)
-                      .map(
-                        (item) => Padding(
-                          padding: EdgeInsets.only(bottom: 10.h),
-                          child: SubscriptionTile(
-                            subscription: item,
-                            compact: true,
-                            onTap: () => setState(() => _selected = item),
-                          ),
-                        ),
-                      ),
-                ],
+                children: List.generate(_subscriptions.length, (index) {
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 10.h),
+                    child: DetailSubscriptionCard(
+                      subscription: _subscriptions[index],
+                      isExpanded: _expandedIndex == index,
+                      onTap: () => _toggleTile(index),
+                      onCancel: () => _cancelSubscription(index),
+                      onAction: _showMessage,
+                    ),
+                  );
+                }),
               ),
       ),
     );

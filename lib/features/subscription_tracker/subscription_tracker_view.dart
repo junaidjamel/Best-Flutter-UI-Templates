@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:flutter_ui/features/subscription_tracker/const/subscription_data.dart';
 import 'package:flutter_ui/features/subscription_tracker/const/subscription_tracker_colors.dart';
-import 'package:flutter_ui/features/subscription_tracker/model/subscription.dart';
 import 'package:flutter_ui/features/subscription_tracker/subscription_detail_view.dart';
 import 'package:flutter_ui/features/subscription_tracker/widget/balance_card.dart';
 import 'package:flutter_ui/features/subscription_tracker/widget/subscription_tile.dart';
@@ -20,13 +19,10 @@ class SubscriptionTrackerView extends StatefulWidget {
 class _SubscriptionTrackerViewState extends State<SubscriptionTrackerView> {
   bool _showBalance = true;
 
-  void _openDetails(Subscription selected) {
+  void _openDetails() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => SubscriptionDetailView(
-          subscriptions: subscriptions,
-          selected: selected,
-        ),
+        builder: (_) => SubscriptionDetailView(subscriptions: subscriptions),
       ),
     );
   }
@@ -36,6 +32,7 @@ class _SubscriptionTrackerViewState extends State<SubscriptionTrackerView> {
     return Scaffold(
       backgroundColor: SubscriptionTrackerColors.background,
       body: SafeArea(
+        bottom: false,
         child: ListView(
           padding: EdgeInsets.fromLTRB(20.w, 18.h, 20.w, 28.h),
           children: [
@@ -74,10 +71,7 @@ class _SubscriptionTrackerViewState extends State<SubscriptionTrackerView> {
               },
             ),
             22.vSpace,
-            _SectionHeader(
-              title: 'Upcoming',
-              onViewAll: () => _openDetails(subscriptions.first),
-            ),
+            _SectionHeader(title: 'Upcoming', onViewAll: _openDetails),
             10.vSpace,
             SizedBox(
               height: 122.h,
@@ -89,16 +83,13 @@ class _SubscriptionTrackerViewState extends State<SubscriptionTrackerView> {
                   final subscription = subscriptions[index];
                   return UpcomingCard(
                     subscription: subscription,
-                    onTap: () => _openDetails(subscription),
+                    onTap: _openDetails,
                   );
                 },
               ),
             ),
             22.vSpace,
-            _SectionHeader(
-              title: 'All Subscriptions',
-              onViewAll: () => _openDetails(subscriptions.first),
-            ),
+            _SectionHeader(title: 'All Subscriptions', onViewAll: _openDetails),
             10.vSpace,
             ...subscriptions
                 .take(3)
@@ -107,7 +98,7 @@ class _SubscriptionTrackerViewState extends State<SubscriptionTrackerView> {
                     padding: EdgeInsets.only(bottom: 10.h),
                     child: SubscriptionTile(
                       subscription: subscription,
-                      onTap: () => _openDetails(subscription),
+                      onTap: _openDetails,
                     ),
                   ),
                 ),
