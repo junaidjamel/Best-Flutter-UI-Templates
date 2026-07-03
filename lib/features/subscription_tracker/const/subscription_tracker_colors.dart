@@ -10,6 +10,7 @@ class SubscriptionTrackerColors {
   static const border = Color(0xFFD9D3C5);
   static const balance = Color(0xFFFF7955);
   static const netflix = Color(0xFFBFD9F7);
-  static const spotify = Color(0xFFFFDF78);
+  static const yellow = Color(0xFFFFDF78);
   static const medium = Color(0xFFAEDCCB);
+  static const adobe = Color(0xFFB891FF);
 }

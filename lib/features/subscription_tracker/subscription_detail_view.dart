@@ -5,9 +5,14 @@ import 'package:flutter_ui/features/subscription_tracker/model/subscription.dart
 import 'package:flutter_ui/features/subscription_tracker/widget/detail_subscription_card.dart';
 
 class SubscriptionDetailView extends StatefulWidget {
-  const SubscriptionDetailView({required this.subscriptions, super.key});
+  const SubscriptionDetailView({
+    required this.subscriptions,
+    required this.onSubscriptionsChanged,
+    super.key,
+  });
 
   final List<Subscription> subscriptions;
+  final ValueChanged<List<Subscription>> onSubscriptionsChanged;
 
   @override
   State<SubscriptionDetailView> createState() => _SubscriptionDetailViewState();
@@ -15,7 +20,7 @@ class SubscriptionDetailView extends StatefulWidget {
 
 class _SubscriptionDetailViewState extends State<SubscriptionDetailView> {
   late List<Subscription> _subscriptions;
-  int? _expandedIndex = 1;
+  int? _expandedIndex;
   int _animationRequest = 0;
 
   @override
@@ -40,7 +45,7 @@ class _SubscriptionDetailViewState extends State<SubscriptionDetailView> {
 
     if (_expandedIndex != null) {
       setState(() => _expandedIndex = null);
-      await Future<void>.delayed(const Duration(milliseconds: 220));
+      await Future<void>.delayed(const Duration(milliseconds: 380));
       if (!mounted || request != _animationRequest) return;
     }
 
@@ -52,6 +57,7 @@ class _SubscriptionDetailViewState extends State<SubscriptionDetailView> {
       _subscriptions.removeAt(index);
       _expandedIndex = null;
     });
+    widget.onSubscriptionsChanged(List.unmodifiable(_subscriptions));
 
     ScaffoldMessenger.of(
       context,

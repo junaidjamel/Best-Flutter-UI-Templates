@@ -4,13 +4,13 @@ import 'package:flutter_ui/features/subscription_tracker/const/subscription_trac
 
 class SubscriptionIcon extends StatelessWidget {
   const SubscriptionIcon({
-    required this.imageUrl,
+    required this.assetPath,
     required this.fallback,
     super.key,
     this.size = 44,
   });
 
-  final String imageUrl;
+  final String assetPath;
   final String fallback;
   final double size;
 
@@ -25,7 +25,7 @@ class SubscriptionIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Image.asset(
-        imageUrl,
+        assetPath,
         fit: BoxFit.contain,
         errorBuilder: (_, _, _) => Center(
           child: Text(

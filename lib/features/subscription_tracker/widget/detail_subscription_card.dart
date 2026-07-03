@@ -59,7 +59,7 @@ class DetailSubscriptionCard extends StatelessWidget {
                   child: Row(
                     children: [
                       SubscriptionIcon(
-                        imageUrl: subscription.icon,
+                        assetPath: subscription.icon,
                         fallback: subscription.name,
                         size: 46,
                       ),

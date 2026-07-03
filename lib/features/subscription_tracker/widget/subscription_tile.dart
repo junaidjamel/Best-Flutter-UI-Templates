@@ -30,7 +30,7 @@ class SubscriptionTile extends StatelessWidget {
           child: Row(
             children: [
               SubscriptionIcon(
-                imageUrl: subscription.icon,
+                assetPath: subscription.icon,
                 fallback: subscription.name,
                 size: compact ? 40 : 46,
               ),

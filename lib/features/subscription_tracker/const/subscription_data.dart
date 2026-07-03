@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_ui/features/subscription_tracker/const/subscription_tracker_colors.dart';
 import 'package:flutter_ui/features/subscription_tracker/model/subscription.dart';
 
@@ -15,7 +14,7 @@ const subscriptions = [
     plan: 'Family',
     price: 8.99,
     icon: 'assets/subscription_tracker/notion.png',
-    color: SubscriptionTrackerColors.spotify,
+    color: SubscriptionTrackerColors.yellow,
   ),
   Subscription(
     name: 'Medium',
@@ -37,7 +36,7 @@ const subscriptions = [
     plan: 'All Apps',
     price: 22,
     icon: 'assets/subscription_tracker/adobe_creative_cloud.png',
-    color: Color.fromARGB(255, 184, 145, 255),
+    color: SubscriptionTrackerColors.adobe,
     billingPeriod: 'every 2 months',
   ),
 ];

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:flutter_ui/features/subscription_tracker/const/subscription_data.dart';
 import 'package:flutter_ui/features/subscription_tracker/const/subscription_tracker_colors.dart';
+import 'package:flutter_ui/features/subscription_tracker/model/subscription.dart';
 import 'package:flutter_ui/features/subscription_tracker/subscription_detail_view.dart';
 import 'package:flutter_ui/features/subscription_tracker/widget/balance_card.dart';
 import 'package:flutter_ui/features/subscription_tracker/widget/subscription_tile.dart';
@@ -17,12 +18,22 @@ class SubscriptionTrackerView extends StatefulWidget {
 }
 
 class _SubscriptionTrackerViewState extends State<SubscriptionTrackerView> {
+  final List<Subscription> _subscriptions = List.of(subscriptions);
   bool _showBalance = true;
 
   void _openDetails() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => SubscriptionDetailView(subscriptions: subscriptions),
+        builder: (_) => SubscriptionDetailView(
+          subscriptions: _subscriptions,
+          onSubscriptionsChanged: (updatedSubscriptions) {
+            setState(() {
+              _subscriptions
+                ..clear()
+                ..addAll(updatedSubscriptions);
+            });
+          },
+        ),
       ),
     );
   }
@@ -72,38 +83,56 @@ class _SubscriptionTrackerViewState extends State<SubscriptionTrackerView> {
                 setState(() => _showBalance = value);
               },
             ),
-            22.vSpace,
-            _SectionHeader(title: 'Upcoming', onViewAll: _openDetails),
-            10.vSpace,
-            SizedBox(
-              height: 122.h,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemCount: subscriptions.length,
-                separatorBuilder: (_, _) => 10.hSpace,
-                itemBuilder: (context, index) {
-                  final reversedIndex = subscriptions.length - 1 - index;
-                  return UpcomingCard(
-                    subscription: subscriptions[reversedIndex],
-                    onTap: _openDetails,
-                  );
-                },
-              ),
-            ),
-            22.vSpace,
-            _SectionHeader(title: 'All Subscriptions', onViewAll: _openDetails),
-            10.vSpace,
-            ...subscriptions
-                .take(3)
-                .map(
-                  (subscription) => Padding(
-                    padding: EdgeInsets.only(bottom: 10.h),
-                    child: SubscriptionTile(
-                      subscription: subscription,
-                      onTap: _openDetails,
+            if (_subscriptions.isEmpty)
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 64.h),
+                child: Center(
+                  child: Text(
+                    'No active subscriptions',
+                    style: TextStyle(
+                      color: SubscriptionTrackerColors.muted,
+                      fontSize: 15.sp,
                     ),
                   ),
                 ),
+              )
+            else ...[
+              22.vSpace,
+              _SectionHeader(title: 'Upcoming', onViewAll: _openDetails),
+              10.vSpace,
+              SizedBox(
+                height: 122.h,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _subscriptions.length,
+                  separatorBuilder: (_, _) => 10.hSpace,
+                  itemBuilder: (context, index) {
+                    final reversedIndex = _subscriptions.length - 1 - index;
+                    return UpcomingCard(
+                      subscription: _subscriptions[reversedIndex],
+                      onTap: _openDetails,
+                    );
+                  },
+                ),
+              ),
+              22.vSpace,
+              _SectionHeader(
+                title: 'All Subscriptions',
+                onViewAll: _openDetails,
+              ),
+              10.vSpace,
+              ..._subscriptions
+                  .take(3)
+                  .map(
+                    (subscription) => Padding(
+                      padding: EdgeInsets.only(bottom: 10.h),
+                      child: SubscriptionTile(
+                        subscription: subscription,
+                        onTap: _openDetails,
+                      ),
+                    ),
+                  ),
+            ],
           ],
         ),
       ),
