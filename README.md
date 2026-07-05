@@ -94,6 +94,17 @@ width="420" alt="Subscription Tracker UI" />
 
 ---
 
+### 8. [Event Calender App UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/event_calender)
+
+Event Calender App.
+
+#### UI Reference
+
+<img src="assets/event_calender/Event_Calender_ui.png"
+width="420" alt="Event Calender UI" />
+
+---
+
 ## Upcoming UIs
 
 More Flutter UI templates will be added soon, including:
