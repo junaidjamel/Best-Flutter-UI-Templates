@@ -36,6 +36,7 @@ class _EventCalenderViewState extends State<EventCalenderView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: EventCalenderColors.background,
       body: Container(
         decoration: const BoxDecoration(
@@ -100,34 +101,53 @@ class _EventCalenderViewState extends State<EventCalenderView> {
           ),
         ),
       ),
-      bottomNavigationBar: NavigationBar(
-        height: 72.h,
-        selectedIndex: _tab,
-        onDestinationSelected: (value) => setState(() => _tab = value),
-        backgroundColor: EventCalenderColors.surface,
-        indicatorColor: EventCalenderColors.accent,
-        labelTextStyle: WidgetStatePropertyAll(
-          GoogleFonts.manrope(
-            color: EventCalenderColors.white,
-            fontSize: 10.sp,
-            fontWeight: FontWeight.w600,
+      bottomNavigationBar: SafeArea(
+        minimum: EdgeInsets.only(bottom: 10.h),
+        child: Center(
+          heightFactor: 1,
+          child: Container(
+            width: 170.w,
+            decoration: BoxDecoration(
+              color: EventCalenderColors.surface.withValues(alpha: .96),
+              borderRadius: BorderRadius.circular(40.r),
+              border: Border.all(color: EventCalenderColors.divider),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color(0x66000000),
+                  blurRadius: 24,
+                  offset: Offset(0, 10),
+                ),
+              ],
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: NavigationBar(
+              height: 60.h,
+              selectedIndex: _tab,
+              onDestinationSelected: (value) => setState(() => _tab = value),
+              backgroundColor: Colors.transparent,
+              indicatorColor: EventCalenderColors.accent,
+              labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+              destinations: const [
+                NavigationDestination(
+                  icon: Icon(Icons.grid_view_rounded),
+                  selectedIcon: Icon(
+                    Icons.grid_view_rounded,
+                    color: Colors.black,
+                  ),
+                  label: '',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.calendar_month_outlined),
+                  selectedIcon: Icon(
+                    Icons.calendar_month_rounded,
+                    color: Colors.black,
+                  ),
+                  label: '',
+                ),
+              ],
+            ),
           ),
         ),
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.grid_view_rounded),
-            selectedIcon: Icon(Icons.grid_view_rounded, color: Colors.black),
-            label: 'Discover',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.calendar_month_outlined),
-            selectedIcon: Icon(
-              Icons.calendar_month_rounded,
-              color: Colors.black,
-            ),
-            label: 'Calendar',
-          ),
-        ],
       ),
     );
   }
@@ -135,7 +155,7 @@ class _EventCalenderViewState extends State<EventCalenderView> {
   Widget _buildFeed() {
     return ListView.separated(
       key: const ValueKey('feed'),
-      padding: EdgeInsets.fromLTRB(14.w, 2.h, 14.w, 24.h),
+      padding: EdgeInsets.fromLTRB(14.w, 2.h, 14.w, 94.h),
       itemCount: EventCalenderData.events.length,
       separatorBuilder: (_, _) => SizedBox(height: 14.h),
       itemBuilder: (_, index) {
@@ -160,7 +180,7 @@ class _EventCalenderViewState extends State<EventCalenderView> {
         .toList();
     return ListView(
       key: const ValueKey('calendar'),
-      padding: EdgeInsets.fromLTRB(18.w, 10.h, 18.w, 28.h),
+      padding: EdgeInsets.fromLTRB(18.w, 10.h, 18.w, 94.h),
       children: [
         EventCalendar(
           selectedDate: _selectedDate,
