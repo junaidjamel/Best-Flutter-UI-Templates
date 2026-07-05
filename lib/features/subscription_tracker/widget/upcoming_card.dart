@@ -40,6 +40,7 @@ class UpcomingCard extends StatelessWidget {
                       fallback: subscription.name,
                       size: 45,
                     ),
+
                     const Spacer(),
                     Text(
                       '\$${subscription.price.toStringAsFixed(2)}',

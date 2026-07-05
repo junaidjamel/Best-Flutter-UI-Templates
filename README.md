@@ -4,9 +4,7 @@ A collection of beautiful, production-ready Flutter UI templates and animations 
 
 ## ❤️ How Can You Support This Project?
 
-This repository is completely free and open source.
-
-If you find these Flutter UI templates useful, here's how you can help:
+If this repository helps you, you can support it in two simple ways:
 
 ⭐ **Star this repository** to help more developers discover it.
 
