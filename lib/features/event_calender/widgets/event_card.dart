@@ -73,6 +73,7 @@ class EventCard extends StatelessWidget {
                 children: [
                   _DateBadge(date: event.date),
                   SizedBox(height: 8.h),
+
                   Material(
                     color: const Color(0x99000000),
                     shape: const CircleBorder(),

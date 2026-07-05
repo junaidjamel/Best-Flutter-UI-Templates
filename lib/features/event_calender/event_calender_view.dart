@@ -81,7 +81,7 @@ class _EventCalenderViewState extends State<EventCalenderView> {
                       color: EventCalenderColors.white,
                     ),
                     CircleAvatar(
-                      radius: 19.r,
+                      radius: 25.r,
                       backgroundColor: EventCalenderColors.orange,
 
                       backgroundImage: NetworkImage(
