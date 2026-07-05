@@ -116,16 +116,19 @@ class _SubscriptionTrackerViewState extends State<SubscriptionTrackerView> {
                 ),
               ),
               22.vSpace,
+
               _SectionHeader(
                 title: 'All Subscriptions',
                 onViewAll: _openDetails,
               ),
+
               10.vSpace,
               ..._subscriptions
                   .take(3)
                   .map(
                     (subscription) => Padding(
                       padding: EdgeInsets.only(bottom: 10.h),
+
                       child: SubscriptionTile(
                         subscription: subscription,
                         onTap: _openDetails,

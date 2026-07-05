@@ -4,9 +4,7 @@ A collection of beautiful, production-ready Flutter UI templates and animations 
 
 ## ❤️ How Can You Support This Project?
 
-This repository is completely free and open source.
-
-If you find these Flutter UI templates useful, here's how you can help:
+If this repository helps you, you can support it in two simple ways:
 
 ⭐ **Star this repository** to help more developers discover it.
 
@@ -93,6 +91,17 @@ Minimal Subscription Tracker app.
 
 <img src="assets/subscription_tracker/subscription_ui.png"
 width="420" alt="Subscription Tracker UI" />
+
+---
+
+### 8. [Event Calender App UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/event_calender)
+
+Event Calender App.
+
+#### UI Reference
+
+<img src="assets/event_calender/Event_Calender_ui.png"
+width="420" alt="Event Calender UI" />
 
 ---
 

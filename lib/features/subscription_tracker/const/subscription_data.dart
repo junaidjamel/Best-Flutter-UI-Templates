@@ -19,7 +19,7 @@ const subscriptions = [
   Subscription(
     name: 'Medium',
     plan: 'Membership',
-    price: 39,
+    price: 5,
     icon: 'assets/subscription_tracker/medium.png',
     color: SubscriptionTrackerColors.medium,
   ),

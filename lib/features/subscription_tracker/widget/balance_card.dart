@@ -30,6 +30,7 @@ class BalanceCard extends StatelessWidget {
                 style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
               ),
               const Spacer(),
+
               Switch.adaptive(
                 value: showBalance,
                 onChanged: onVisibilityChanged,
