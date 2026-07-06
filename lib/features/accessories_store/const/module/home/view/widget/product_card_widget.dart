@@ -23,7 +23,8 @@ class ProductCardWidget extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20),
           margin: const EdgeInsets.only(left: 20),
           borderRadius: 16,
-          height: 210.h,
+          height: 0,
+          // 210.h,
           width: 165.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,27 +35,38 @@ class ProductCardWidget extends StatelessWidget {
                 child: SizedBox(
                   height: 115.h,
                   width: 130.w,
-                  child: Hero(
-                    tag: product.productImg,
-                    child: Image.asset(
-                      product.productImg,
-                      fit: index == 3 ? BoxFit.fitWidth : BoxFit.fitHeight,
-                    ),
-                  ),
+                  // child: Hero(
+                  //   tag: product.productImg,
+                  //   child: Image.asset(
+                  //     product.productImg,
+                  //     fit: index == 3 ? BoxFit.fitWidth : BoxFit.fitHeight,
+                  //   ),
+
+                  // ),
                 ),
               ),
               Text(
                 product.productCompany,
-                style: subtitleStyle(context).copyWith(color: Colors.grey[400]),
+                style: subtitleStyle(context).copyWith(
+                  color: Colors.transparent,
+                  //Colors.grey[400],
+                ),
               ),
               Text(
                 product.productTitle,
-                style: GoogleFonts.kanit(color: Colors.white, fontSize: 15.sp),
+                style: GoogleFonts.kanit(
+                  color: Colors.transparent,
+                  // Colors.white,
+                  fontSize: 15.sp,
+                ),
               ),
               SizedBox(height: 0.5.h),
               Text(
                 "\$${product.productPrice}0",
-                style: subtitleStyle(context).copyWith(color: Colors.grey[400]),
+                style: subtitleStyle(context).copyWith(
+                  color: Colors.transparent,
+                  // Colors.grey[400],
+                ),
               ),
             ],
           ),

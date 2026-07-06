@@ -49,22 +49,22 @@ class PageViewWithDotsState extends State<PageViewWithDots> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
-          height: 300.h,
+          height: 0,
+          // 300.h,
           child: PageView.builder(
             controller: _controller,
             itemCount: _slides.length,
             itemBuilder: (_, index) {
               return Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                height: 35.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey[400],
-                  image: DecorationImage(
-                    image: AssetImage(_slides[index]),
-                    fit: BoxFit.cover,
-                  ),
+                  // image: DecorationImage(
+                  //   image: AssetImage(_slides[index]),
+                  //   fit: BoxFit.cover,
+                  // ),
                 ),
               );
             },

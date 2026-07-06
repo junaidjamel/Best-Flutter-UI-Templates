@@ -105,6 +105,17 @@ width="420" alt="Event Calender UI" />
 
 ---
 
+### 9. [Accessories Store App UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/accessories_store)
+
+A functionla tech accessories store.
+
+#### UI Reference
+
+<img src="assets/accessories_store/accessories_ui.png"
+width="420" alt="Accessories Store App" />
+
+---
+
 ## Upcoming UIs
 
 More Flutter UI templates will be added soon, including:

@@ -86,7 +86,8 @@ class _AccessoriesBottomNavBarState extends State<AccessoriesBottomNavBar> {
           padding: EdgeInsets.all(6.sp),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: Colors.black,
+            color: Colors.transparent,
+            // Colors.black,
             gradient: LinearGradient(
               colors: [
                 Colors.black.withValues(alpha: 0.85),
@@ -102,10 +103,10 @@ class _AccessoriesBottomNavBarState extends State<AccessoriesBottomNavBar> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildNavItem(homeIcon, 0),
-              _buildNavItem(cartIcon, 1),
-              _buildNavItem(lockIcon, 2),
-              _buildNavItem(searchIcon, 3),
+              // _buildNavItem(homeIcon, 0),
+              // _buildNavItem(cartIcon, 1),
+              // _buildNavItem(lockIcon, 2),
+              // _buildNavItem(searchIcon, 3),
             ],
           ),
         ),
