@@ -4,15 +4,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:flutter_ui/features/accessories_store/const/images.dart';
-import 'package:flutter_ui/features/accessories_store/const/module/cart/provider/cart_provider.dart';
 import 'package:flutter_ui/features/accessories_store/const/module/home/model/product_model.dart';
 import 'package:flutter_ui/features/accessories_store/const/module/home/view/widget/selected_color_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class ProductInfoWidget extends StatelessWidget {
   final ProductModel productModel;
-  const ProductInfoWidget({super.key, required this.productModel});
+  final ValueChanged<ProductModel> onAddToCart;
+
+  const ProductInfoWidget({
+    super.key,
+    required this.productModel,
+    required this.onAddToCart,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +67,7 @@ class ProductInfoWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              onPressed: () => Provider.of<CartProvider>(
-                context,
-                listen: false,
-              ).addToCart(productModel),
+              onPressed: () => onAddToCart(productModel),
             ),
           ],
         ),

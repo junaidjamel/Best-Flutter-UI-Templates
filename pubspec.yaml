@@ -37,7 +37,6 @@ dependencies:
   google_fonts: ^8.1.0
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.3.0
-  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:
@@ -65,3 +64,6 @@ flutter:
     - assets/coffee_shope/
     - assets/subscription_tracker/
     - assets/accessories_store/
+    - assets/accessories_store/icons/
+    - assets/accessories_store/product/
+    - assets/accessories_store/product/detailImg/

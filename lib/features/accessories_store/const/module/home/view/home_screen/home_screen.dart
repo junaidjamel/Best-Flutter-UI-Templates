@@ -10,7 +10,9 @@ import 'package:flutter_ui/features/accessories_store/const/module/home/view/wid
 import 'package:flutter_ui/features/accessories_store/const/txt_style.dart';
 
 class AccessoriesHomeScreen extends StatelessWidget {
-  const AccessoriesHomeScreen({super.key});
+  final ValueChanged<ProductModel> onAddToCart;
+
+  const AccessoriesHomeScreen({super.key, required this.onAddToCart});
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +32,13 @@ class AccessoriesHomeScreen extends StatelessWidget {
               'New Accessories !',
               style: headingStyle(
                 context,
-              ).copyWith(color: Colors.black, fontSize: 15.sp),
+              ).copyWith(color: Colors.black, fontSize: 17.sp),
             ),
           ],
         ),
         actions: [
           CircleAvatar(
-            radius: 20.sp,
+            radius: 25.sp,
             backgroundColor: Colors.black87,
             backgroundImage: NetworkImage(
               'https://media.istockphoto.com/id/2120762556/photo/portrait-of-a-man-taking-selfie.jpg?s=612x612&w=0&k=20&c=h83Yfkk7LL9_mvjDs1gWSCW61yL_tIr-Ymy5Hy_uXBA=',
@@ -75,7 +77,7 @@ class AccessoriesHomeScreen extends StatelessWidget {
 
           // Products Builder
           SizedBox(
-            height: 24.h,
+            height: 220.h,
             child: ListView.builder(
               itemCount: ProductModel.productList.length,
               scrollDirection: Axis.horizontal,
@@ -88,6 +90,7 @@ class AccessoriesHomeScreen extends StatelessWidget {
                       builder: (_) => ProductDetailScreen(
                         productModel: product,
                         index: index,
+                        onAddToCart: onAddToCart,
                       ),
                     ),
                   ),

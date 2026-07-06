@@ -10,10 +10,13 @@ import 'package:flutter_ui/features/accessories_store/const/module/home/view/wid
 class ProductDetailScreen extends StatefulWidget {
   final ProductModel productModel;
   final int index;
+  final ValueChanged<ProductModel> onAddToCart;
+
   const ProductDetailScreen({
     super.key,
     required this.productModel,
     required this.index,
+    required this.onAddToCart,
   });
 
   @override
@@ -92,7 +95,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
                   ),
                 ),
                 3.vSpace,
-                ProductInfoWidget(productModel: widget.productModel),
+                ProductInfoWidget(
+                  productModel: widget.productModel,
+                  onAddToCart: widget.onAddToCart,
+                ),
               ],
             ),
           ),

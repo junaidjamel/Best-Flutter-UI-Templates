@@ -23,17 +23,17 @@ class ProductCardWidget extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20),
           margin: const EdgeInsets.only(left: 20),
           borderRadius: 16,
-          height: 24.h,
-          width: 33.w,
+          height: 210.h,
+          width: 165.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              3.vSpace,
+              12.vSpace,
               Align(
                 alignment: Alignment.bottomRight,
                 child: SizedBox(
-                  height: 12.h,
-                  width: 100.w,
+                  height: 115.h,
+                  width: 130.w,
                   child: Hero(
                     tag: product.productImg,
                     child: Image.asset(

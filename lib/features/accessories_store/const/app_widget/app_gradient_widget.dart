@@ -32,7 +32,7 @@ class AppGradientWidget extends StatelessWidget {
             Colors.black.withValues(alpha: 0.95),
             Colors.black.withValues(alpha: 0.9),
           ],
-          stops: const [0.0, 0.4, 0.8],
+          stops: const [0.0, 0.8],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
