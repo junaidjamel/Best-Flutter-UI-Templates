@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppGradientWidget extends StatelessWidget {
   final double? height;
   final double? width;
-  double? borderRadius;
-  EdgeInsetsGeometry? padding = const EdgeInsets.all(0);
-  EdgeInsetsGeometry? margin = const EdgeInsets.all(0);
+  final double? borderRadius;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
   final Widget child;
-  AppGradientWidget({
+
+  const AppGradientWidget({
     super.key,
     required this.child,
     this.height,
@@ -23,8 +23,8 @@ class AppGradientWidget extends StatelessWidget {
     return Container(
       margin: margin,
       padding: padding,
-      height: height ?? 100.h,
-      width: width ?? 100.w,
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius ?? 0),
         gradient: LinearGradient(

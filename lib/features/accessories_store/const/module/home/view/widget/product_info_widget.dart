@@ -26,29 +26,39 @@ class ProductInfoWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              productModel.productTitle,
-              style: GoogleFonts.kanit(fontSize: 20.sp, color: Colors.grey),
+            Expanded(
+              child: Text(
+                productModel.productTitle,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.kanit(fontSize: 24.sp, color: Colors.grey),
+              ),
             ),
+            12.hSpace,
             Text(
-              "\$${productModel.productPrice}0",
-              style: GoogleFonts.kanit(fontSize: 20.sp, color: Colors.grey),
+              "\$${productModel.productPrice.toStringAsFixed(2)}",
+              style: GoogleFonts.kanit(fontSize: 24.sp, color: Colors.grey),
             ),
           ],
         ),
-        2.vSpace,
+        14.vSpace,
         Text(
           productModel.productTagLine,
-          style: GoogleFonts.kanit(fontSize: 19.sp, color: Colors.white),
+          style: GoogleFonts.kanit(
+            fontSize: 19.sp,
+            color: Colors.white,
+            height: 1.25,
+          ),
         ),
-        2.vSpace,
+        24.vSpace,
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ColorContainerWidget(),
+            const ColorContainerWidget(),
             CupertinoButton(
+              padding: EdgeInsets.zero,
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 20),
+                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 24),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
@@ -61,7 +71,7 @@ class ProductInfoWidget extends StatelessWidget {
                       'Add to Cart',
                       style: GoogleFonts.kanit(
                         color: Colors.black,
-                        fontSize: 17.sp,
+                        fontSize: 19.sp,
                       ),
                     ),
                   ],
@@ -71,9 +81,9 @@ class ProductInfoWidget extends StatelessWidget {
             ),
           ],
         ),
-        2.vSpace,
+        22.vSpace,
         const Divider(color: Colors.grey),
-        1.vSpace,
+        14.vSpace,
         Center(
           child: TextButton(
             onPressed: () {},

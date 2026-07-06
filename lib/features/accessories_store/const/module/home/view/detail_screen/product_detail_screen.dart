@@ -55,51 +55,59 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppGradientWidget(
+        height: double.infinity,
+        width: double.infinity,
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: CircleAvatar(
-                        radius: 20.sp,
-                        backgroundColor: Colors.white.withValues(alpha: 0.6),
-                        child: Icon(Icons.keyboard_arrow_left, size: 22.sp),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: CircleAvatar(
+                          radius: 20.sp,
+                          backgroundColor: Colors.white.withValues(alpha: 0.6),
+                          child: Icon(Icons.keyboard_arrow_left, size: 30.sp),
+                        ),
+                      ),
+                      SvgPicture.asset(
+                        threeDotIcon,
+                        color: Colors.white.withValues(alpha: 0.6),
+                        width: 30.w,
+                      ),
+                    ],
+                  ),
+                  4.vSpace,
+                  SizedBox(
+                    height: 330.h,
+                    width: double.infinity,
+                    child: Hero(
+                      tag: widget.productModel.productImg,
+                      child: SlideTransition(
+                        position: Tween<Offset>(
+                          begin: const Offset(0, -0.1),
+                          end: const Offset(0, 0.1),
+                        ).animate(controller),
+                        child: Image.asset(
+                          widget.productModel.productDetailImg,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                    SvgPicture.asset(
-                      threeDotIcon,
-                      color: Colors.white.withValues(alpha: 0.6),
-                      width: 7.w,
-                    ),
-                  ],
-                ),
-                4.vSpace,
-                SizedBox(
-                  height: 40.h,
-                  width: double.infinity,
-                  child: Hero(
-                    tag: widget.productModel.productImg,
-                    child: SlideTransition(
-                      position: Tween<Offset>(
-                        begin: const Offset(0, -0.1),
-                        end: const Offset(0, 0.1),
-                      ).animate(controller),
-                      child: Image.asset(widget.productModel.productDetailImg),
-                    ),
                   ),
-                ),
-                3.vSpace,
-                ProductInfoWidget(
-                  productModel: widget.productModel,
-                  onAddToCart: widget.onAddToCart,
-                ),
-              ],
+                  20.vSpace,
+                  ProductInfoWidget(
+                    productModel: widget.productModel,
+                    onAddToCart: widget.onAddToCart,
+                  ),
+                  24.vSpace,
+                ],
+              ),
             ),
           ),
         ),

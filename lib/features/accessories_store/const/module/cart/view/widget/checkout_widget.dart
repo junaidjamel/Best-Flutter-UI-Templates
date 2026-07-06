@@ -21,6 +21,7 @@ class CheckOutWidget extends StatelessWidget {
     return AppGradientWidget(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 1.h),
       height: 29.h,
+      width: double.infinity,
       borderRadius: 16,
       child: Column(
         children: [
