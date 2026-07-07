@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/core/extensions/sizedbox_extension.dart';
-import 'package:flutter_ui/features/accessories_store/const/app_widget/app_gradient_widget.dart';
-import 'package:flutter_ui/features/accessories_store/const/txt_style.dart';
+import 'package:flutter_ui/features/accessories_store/app_widget/app_gradient_widget.dart';
+import 'package:flutter_ui/features/accessories_store/txt_style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CheckOutWidget extends StatelessWidget {

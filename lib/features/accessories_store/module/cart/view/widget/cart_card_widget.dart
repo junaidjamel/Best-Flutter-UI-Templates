@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ui/features/accessories_store/const/app_widget/app_gradient_widget.dart';
-import 'package:flutter_ui/features/accessories_store/const/module/home/model/product_model.dart';
+import 'package:flutter_ui/features/accessories_store/app_widget/app_gradient_widget.dart';
+import 'package:flutter_ui/features/accessories_store/module/home/model/product_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CartCardWidget extends StatelessWidget {

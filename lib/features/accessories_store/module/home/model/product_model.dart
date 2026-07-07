@@ -1,4 +1,4 @@
-import 'package:flutter_ui/features/accessories_store/const/images.dart';
+import 'package:flutter_ui/features/accessories_store/images.dart';
 
 class ProductModel {
   final int id;

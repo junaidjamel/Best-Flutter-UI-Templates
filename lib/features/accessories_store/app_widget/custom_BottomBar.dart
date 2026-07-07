@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_ui/features/accessories_store/const/images.dart';
-import 'package:flutter_ui/features/accessories_store/const/module/cart/view/cart/cart_screen.dart';
-import 'package:flutter_ui/features/accessories_store/const/module/home/model/product_model.dart';
-import 'package:flutter_ui/features/accessories_store/const/module/home/view/home_screen/home_screen.dart';
+import 'package:flutter_ui/features/accessories_store/images.dart';
+import 'package:flutter_ui/features/accessories_store/module/cart/view/cart/cart_screen.dart';
+import 'package:flutter_ui/features/accessories_store/module/home/model/product_model.dart';
+import 'package:flutter_ui/features/accessories_store/module/home/view/home_screen/home_screen.dart';
 
 class AccessoriesBottomNavBar extends StatefulWidget {
   const AccessoriesBottomNavBar({super.key});
@@ -86,8 +86,7 @@ class _AccessoriesBottomNavBarState extends State<AccessoriesBottomNavBar> {
           padding: EdgeInsets.all(6.sp),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: Colors.transparent,
-            // Colors.black,
+            color: Colors.black,
             gradient: LinearGradient(
               colors: [
                 Colors.black.withValues(alpha: 0.85),
@@ -103,10 +102,10 @@ class _AccessoriesBottomNavBarState extends State<AccessoriesBottomNavBar> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // _buildNavItem(homeIcon, 0),
-              // _buildNavItem(cartIcon, 1),
-              // _buildNavItem(lockIcon, 2),
-              // _buildNavItem(searchIcon, 3),
+              _buildNavItem(homeIcon, 0),
+              _buildNavItem(cartIcon, 1),
+              _buildNavItem(lockIcon, 2),
+              _buildNavItem(searchIcon, 3),
             ],
           ),
         ),
