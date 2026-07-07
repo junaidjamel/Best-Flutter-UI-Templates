@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ui/features/accessories_store/const/images.dart';
+import 'package:flutter_ui/features/accessories_store/images.dart';
 
 class PageViewWithDots extends StatefulWidget {
   const PageViewWithDots({super.key});
@@ -49,8 +49,7 @@ class PageViewWithDotsState extends State<PageViewWithDots> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
-          height: 0,
-          // 300.h,
+          height: 300.h,
           child: PageView.builder(
             controller: _controller,
             itemCount: _slides.length,
@@ -61,10 +60,10 @@ class PageViewWithDotsState extends State<PageViewWithDots> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey[400],
-                  // image: DecorationImage(
-                  //   image: AssetImage(_slides[index]),
-                  //   fit: BoxFit.cover,
-                  // ),
+                  image: DecorationImage(
+                    image: AssetImage(_slides[index]),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               );
             },
