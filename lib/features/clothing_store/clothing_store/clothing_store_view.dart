@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/core/extensions/sizedbox_extension.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_ui/features/clothing_store/model/clothing_cart_item.dart
 import 'package:flutter_ui/features/clothing_store/model/clothing_product.dart';
 import 'package:flutter_ui/features/clothing_store/widget/clothing_bottom_nav.dart';
 import 'package:flutter_ui/features/clothing_store/widget/clothing_category_chip.dart';
-import 'package:flutter_ui/features/clothing_store/widget/clothing_icon_button.dart';
 import 'package:flutter_ui/features/clothing_store/widget/clothing_product_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -192,11 +190,11 @@ class _ProductPanel extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverPadding(
-              padding: EdgeInsets.fromLTRB(22.w, 10.h, 22.w, 0),
+              padding: EdgeInsets.fromLTRB(22.w, 0, 22.w, 0),
               sliver: SliverToBoxAdapter(child: _HomeHeader()),
             ),
             SliverPadding(
-              padding: EdgeInsets.only(top: 16.h),
+              padding: EdgeInsets.only(top: 10.h),
               sliver: SliverToBoxAdapter(
                 child: _FilterList(
                   categories: categories,
@@ -206,7 +204,7 @@ class _ProductPanel extends StatelessWidget {
               ),
             ),
             SliverPadding(
-              padding: EdgeInsets.fromLTRB(22.w, 25.h, 22.w, 30.h),
+              padding: EdgeInsets.fromLTRB(22.w, 15.h, 22.w, 30.h),
               sliver: _ProductGrid(
                 products: products,
                 filterKey: categories[selectedCategory],
@@ -273,9 +271,9 @@ class _ProductGrid extends StatelessWidget {
       itemCount: products.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 17.h,
+        mainAxisSpacing: 18.h,
         crossAxisSpacing: 15.w,
-        childAspectRatio: 0.68,
+        childAspectRatio: 0.62,
       ),
       itemBuilder: (context, index) {
         final product = products[index];
@@ -296,64 +294,44 @@ class _HomeHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              30.vSpace,
-              Row(
-                children: [
-                  Icon(
-                    Icons.apps_rounded,
-                    size: 19.sp,
-                    color: ClothingAppColors.ink,
-                  ),
-                  const Spacer(),
-                  ClothingIconButton(
-                    icon: CupertinoIcons.search,
-                    size: 32,
-                    backgroundColor: Colors.transparent,
-                  ),
-                  6.hSpace,
-                  ClothingIconButton(
-                    icon: Icons.autorenew_rounded,
-                    size: 32,
-                    backgroundColor: Colors.transparent,
-                  ),
-                ],
-              ),
-              8.vSpace,
-              Text(
-                'Find your',
-                style: GoogleFonts.poppins(
-                  color: ClothingAppColors.ink,
-                  fontSize: 26.sp,
-                  height: 1.02,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              RichText(
-                text: TextSpan(
+          child: SafeArea(
+            bottom: false,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Find your',
                   style: GoogleFonts.poppins(
                     color: ClothingAppColors.ink,
                     fontSize: 26.sp,
-                    height: 1.08,
-                    fontWeight: FontWeight.w400,
+                    height: 1.02,
+                    fontWeight: FontWeight.w700,
                   ),
-                  children: [
-                    const TextSpan(text: 'match '),
-                    TextSpan(
-                      text: 'style!',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.underline,
-                        decorationColor: ClothingAppColors.orange,
-                        decorationThickness: 2,
-                      ),
-                    ),
-                  ],
                 ),
-              ),
-            ],
+                RichText(
+                  text: TextSpan(
+                    style: GoogleFonts.poppins(
+                      color: ClothingAppColors.ink,
+                      fontSize: 26.sp,
+                      height: 1.08,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    children: [
+                      const TextSpan(text: 'match '),
+                      TextSpan(
+                        text: 'style!',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500,
+                          decoration: TextDecoration.underline,
+                          decorationColor: ClothingAppColors.orange,
+                          decorationThickness: 2,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],

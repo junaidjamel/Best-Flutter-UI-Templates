@@ -23,13 +23,29 @@ class ClothingProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(child: _ProductImage(product: product, onTap: onFavoriteTap)),
-          9.vSpace,
-          _ProductInfo(product: product),
-        ],
+      child: Container(
+        padding: EdgeInsets.all(7.w),
+        decoration: BoxDecoration(
+          color: ClothingAppColors.surface,
+          borderRadius: BorderRadius.circular(22.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.055),
+              blurRadius: 18,
+              offset: Offset(0, 9.h),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: _ProductImage(product: product, onTap: onFavoriteTap),
+            ),
+            10.vSpace,
+            _ProductInfo(product: product),
+          ],
+        ),
       ),
     );
   }
@@ -45,11 +61,48 @@ class _ProductImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(16.r),
-          child: ColoredBox(
-            color: ClothingAppColors.surfaceSoft,
-            child: ClothingNetworkImage(imageUrl: product.imageUrl),
+        Positioned.fill(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(18.r),
+            child: ColoredBox(
+              color: ClothingAppColors.surfaceSoft,
+              child: ClothingNetworkImage(imageUrl: product.imageUrl),
+            ),
+          ),
+        ),
+        Positioned.fill(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18.r),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.white.withValues(alpha: 0),
+                  Colors.black.withValues(alpha: 0.04),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          left: 10.w,
+          bottom: 10.h,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.86),
+              borderRadius: BorderRadius.circular(999.r),
+            ),
+            child: Text(
+              product.categories.first,
+              style: GoogleFonts.poppins(
+                color: ClothingAppColors.ink.withValues(alpha: 0.72),
+                fontSize: 8.5.sp,
+                height: 1,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ),
         ),
         Positioned(
@@ -62,7 +115,7 @@ class _ProductImage extends StatelessWidget {
             iconColor: product.isFavorite
                 ? ClothingAppColors.danger
                 : ClothingAppColors.muted,
-            size: 29,
+            size: 33,
             onTap: onTap,
           ),
         ),
@@ -78,31 +131,47 @@ class _ProductInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          product.name,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: GoogleFonts.poppins(
-            color: ClothingAppColors.ink,
-            fontSize: 13.sp,
-            height: 1,
-            fontWeight: FontWeight.w700,
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            product.name,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: GoogleFonts.poppins(
+              color: ClothingAppColors.ink,
+              fontSize: 14.sp,
+              height: 1,
+              fontWeight: FontWeight.w800,
+            ),
           ),
-        ),
-        2.vSpace,
-        Text(
-          '\$${product.price.toStringAsFixed(2)}',
-          style: GoogleFonts.poppins(
-            color: ClothingAppColors.ink.withValues(alpha: .8),
-            fontSize: 12.sp,
-            height: 1,
-            fontWeight: FontWeight.w700,
+          Row(
+            children: [
+              Text(
+                '\$${product.price.toStringAsFixed(2)}',
+                style: GoogleFonts.poppins(
+                  color: ClothingAppColors.ink.withValues(alpha: .84),
+                  fontSize: 13.sp,
+                  height: 1,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const Spacer(),
+              CircleAvatar(
+                radius: 13.sp,
+                backgroundColor: ClothingAppColors.ink,
+                child: Icon(
+                  Icons.arrow_forward_rounded,
+                  color: Colors.white,
+                  size: 18.sp,
+                ),
+              ),
+            ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
