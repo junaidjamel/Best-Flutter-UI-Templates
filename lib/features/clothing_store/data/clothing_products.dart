@@ -11,9 +11,9 @@ const List<ClothingProduct> clothingProducts = [
         'https://i.pinimg.com/1200x/e3/2a/02/e32a02ce912d3e8ecdf9dd2e6463b7a1.jpg',
     gallery: [
       'https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=85',
-      'https://images.unsplash.com/photo-1516826957135-700dedea698c?auto=format&fit=crop&w=900&q=85',
+      'https://i.pinimg.com/1200x/33/1b/3c/331b3ce685c064b38d8efba6d561a9fb.jpg',
       'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=900&q=85',
-      'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=85',
+      'https://i.pinimg.com/736x/64/e8/8e/64e88ec6901e0cf98ca54be75830307e.jpg',
     ],
     categories: ['Trending Now', 'Fresh Drops'],
     isFavorite: true,
@@ -28,8 +28,8 @@ const List<ClothingProduct> clothingProducts = [
         'https://i.pinimg.com/1200x/06/d3/19/06d3192bcca3d5d7e17b19262f17c24d.jpg',
     gallery: [
       'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85',
-      'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=900&q=85',
-      'https://images.unsplash.com/photo-1533399710066-c33de66fe6bb?auto=format&fit=crop&w=900&q=85',
+      'https://i.pinimg.com/736x/1e/14/86/1e1486bf6aba1a5d45d16d4ae85ee9f1.jpg',
+      'https://i.pinimg.com/736x/5f/4b/cf/5f4bcf42c7bcfc70552d7b174d4d0111.jpg',
     ],
     categories: ['Trending Now', 'Street Edit'],
   ),

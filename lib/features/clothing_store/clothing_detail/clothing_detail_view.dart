@@ -39,64 +39,65 @@ class _ClothingDetailViewState extends State<ClothingDetailView> {
     return Scaffold(
       backgroundColor: ClothingAppColors.ink,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(14.w, 12.h, 14.w, 14.h),
-          child: Column(
-            children: [
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(34.r),
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      ColoredBox(
-                        color: ClothingAppColors.surfaceSoft,
-                        child: ClothingNetworkImage(imageUrl: _selectedImage),
+        top: false,
+        child: Column(
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(34.r),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ColoredBox(
+                      color: ClothingAppColors.surfaceSoft,
+                      child: ClothingNetworkImage(imageUrl: _selectedImage),
+                    ),
+                    const _DetailShade(),
+                    Positioned(
+                      left: 16.w,
+                      top: 60.h,
+                      child: ClothingIconButton(
+                        icon: Icons.arrow_back_ios_new_rounded,
+                        size: 34,
+                        backgroundColor: Colors.white.withValues(alpha: 0.72),
+                        onTap: () => Navigator.of(context).pop(),
                       ),
-                      const _DetailShade(),
-                      Positioned(
-                        left: 16.w,
-                        top: 16.h,
-                        child: ClothingIconButton(
-                          icon: Icons.arrow_back_ios_new_rounded,
-                          size: 34,
-                          backgroundColor: Colors.white.withValues(alpha: 0.72),
-                          onTap: () => Navigator.of(context).pop(),
-                        ),
+                    ),
+                    Positioned(
+                      right: 16.w,
+                      top: 60.h,
+                      child: ClothingIconButton(
+                        icon: _isFavorite
+                            ? Icons.favorite_rounded
+                            : Icons.favorite_border_rounded,
+                        iconColor: _isFavorite
+                            ? ClothingAppColors.danger
+                            : ClothingAppColors.muted,
+                        size: 40,
+                        onTap: () {
+                          setState(() => _isFavorite = !_isFavorite);
+                          widget.onFavoriteTap();
+                        },
                       ),
-                      Positioned(
-                        right: 16.w,
-                        top: 16.h,
-                        child: ClothingIconButton(
-                          icon: _isFavorite
-                              ? Icons.favorite_rounded
-                              : Icons.favorite_border_rounded,
-                          iconColor: _isFavorite
-                              ? ClothingAppColors.danger
-                              : ClothingAppColors.muted,
-                          size: 40,
-                          onTap: () {
-                            setState(() => _isFavorite = !_isFavorite);
-                            widget.onFavoriteTap();
-                          },
-                        ),
+                    ),
+                    Positioned(
+                      right: 14.w,
+                      top: 180.h,
+                      child: _ImageRail(
+                        images: widget.product.gallery,
+                        selectedImage: _selectedImage,
+                        onSelect: (image) =>
+                            setState(() => _selectedImage = image),
                       ),
-                      Positioned(
-                        right: 14.w,
-                        top: 180.h,
-                        child: _ImageRail(
-                          images: widget.product.gallery,
-                          selectedImage: _selectedImage,
-                          onSelect: (image) =>
-                              setState(() => _selectedImage = image),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              16.vSpace,
-              Row(
+            ),
+            16.vSpace,
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Expanded(
@@ -107,7 +108,7 @@ class _ClothingDetailViewState extends State<ClothingDetailView> {
                           'Sub total',
                           style: GoogleFonts.poppins(
                             color: Colors.white54,
-                            fontSize: 12.sp,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -116,8 +117,8 @@ class _ClothingDetailViewState extends State<ClothingDetailView> {
                           '\$${widget.product.price.toStringAsFixed(2)}',
                           style: GoogleFonts.poppins(
                             color: Colors.white,
-                            fontSize: 19.sp,
-                            fontWeight: FontWeight.w800,
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ],
@@ -139,16 +140,16 @@ class _ClothingDetailViewState extends State<ClothingDetailView> {
                       child: Text(
                         'Add to Cart',
                         style: GoogleFonts.poppins(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w700,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

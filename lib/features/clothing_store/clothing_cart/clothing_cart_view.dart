@@ -47,8 +47,6 @@ class _ClothingCartViewState extends State<ClothingCartView> {
 
   @override
   Widget build(BuildContext context) {
-    final bagTotal = _subTotal + _shipping;
-
     return Scaffold(
       backgroundColor: ClothingAppColors.background,
       body: SafeArea(
@@ -56,68 +54,103 @@ class _ClothingCartViewState extends State<ClothingCartView> {
           padding: EdgeInsets.fromLTRB(22.w, 14.h, 22.w, 20.h),
           child: Column(
             children: [
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).pop(),
-                    child: Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      size: 17.sp,
-                      color: ClothingAppColors.ink,
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                          'My Cart',
-                          style: GoogleFonts.poppins(
-                            color: ClothingAppColors.ink,
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Text(
-                          '${widget.cartItems.length} Items',
-                          style: GoogleFonts.poppins(
-                            color: ClothingAppColors.muted,
-                            fontSize: 11.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: 17.w),
-                ],
-              ),
+              _CartHeader(itemCount: widget.cartItems.length),
               24.vSpace,
               Expanded(
-                child: widget.cartItems.isEmpty
-                    ? const _EmptyCart()
-                    : ListView.separated(
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: widget.cartItems.length,
-                        separatorBuilder: (_, _) => 15.vSpace,
-                        itemBuilder: (context, index) {
-                          return _CartProductTile(
-                            cartItem: widget.cartItems[index],
-                            onIncrease: _increase,
-                            onDecrease: _decrease,
-                            onRemove: _remove,
-                          );
-                        },
-                      ),
+                child: _CartItemsList(
+                  cartItems: widget.cartItems,
+                  onIncrease: _increase,
+                  onDecrease: _decrease,
+                  onRemove: _remove,
+                ),
               ),
               _CartSummary(
                 subTotal: _subTotal,
                 shipping: _shipping,
-                bagTotal: bagTotal,
+                bagTotal: _subTotal + _shipping,
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class _CartHeader extends StatelessWidget {
+  const _CartHeader({required this.itemCount});
+
+  final int itemCount;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        GestureDetector(
+          onTap: () => Navigator.of(context).pop(),
+          child: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            size: 17.sp,
+            color: ClothingAppColors.ink,
+          ),
+        ),
+        Expanded(
+          child: Column(
+            children: [
+              Text(
+                'My Cart',
+                style: GoogleFonts.poppins(
+                  color: ClothingAppColors.ink,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Text(
+                '$itemCount Items',
+                style: GoogleFonts.poppins(
+                  color: ClothingAppColors.muted,
+                  fontSize: 11.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(width: 17.w),
+      ],
+    );
+  }
+}
+
+class _CartItemsList extends StatelessWidget {
+  const _CartItemsList({
+    required this.cartItems,
+    required this.onIncrease,
+    required this.onDecrease,
+    required this.onRemove,
+  });
+
+  final List<ClothingCartItem> cartItems;
+  final ValueChanged<ClothingProduct> onIncrease;
+  final ValueChanged<ClothingProduct> onDecrease;
+  final ValueChanged<ClothingProduct> onRemove;
+
+  @override
+  Widget build(BuildContext context) {
+    if (cartItems.isEmpty) return const _EmptyCart();
+
+    return ListView.separated(
+      physics: const BouncingScrollPhysics(),
+      itemCount: cartItems.length,
+      separatorBuilder: (_, _) => 15.vSpace,
+      itemBuilder: (context, index) {
+        return _CartProductTile(
+          cartItem: cartItems[index],
+          onIncrease: onIncrease,
+          onDecrease: onDecrease,
+          onRemove: onRemove,
+        );
+      },
     );
   }
 }

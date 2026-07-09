@@ -22,19 +22,25 @@ class ClothingStoreView extends StatefulWidget {
 }
 
 class _ClothingStoreViewState extends State<ClothingStoreView> {
-  final List<String> _categories = const [
+  static const List<String> _categories = [
     'Trending Now',
     'Fresh Drops',
     'Street Edit',
   ];
+
   late List<ClothingProduct> _products;
   final List<ClothingCartItem> _cartItems = [];
+
   int _selectedCategory = 0;
 
   @override
   void initState() {
     super.initState();
     _products = List.of(clothingProducts);
+    _seedCart();
+  }
+
+  void _seedCart() {
     _cartItems.addAll([
       ClothingCartItem(product: _products[1], quantity: 1),
       ClothingCartItem(product: _products[2], quantity: 1),
@@ -52,6 +58,10 @@ class _ClothingStoreViewState extends State<ClothingStoreView> {
         .toList();
   }
 
+  int _cartIndexOf(ClothingProduct product) {
+    return _cartItems.indexWhere((item) => item.product.id == product.id);
+  }
+
   void _toggleFavorite(ClothingProduct product) {
     setState(() {
       final index = _products.indexWhere((item) => item.id == product.id);
@@ -64,9 +74,7 @@ class _ClothingStoreViewState extends State<ClothingStoreView> {
 
   void _addToCart(ClothingProduct product, {bool showMessage = true}) {
     setState(() {
-      final index = _cartItems.indexWhere(
-        (item) => item.product.id == product.id,
-      );
+      final index = _cartIndexOf(product);
       if (index == -1) {
         _cartItems.add(ClothingCartItem(product: product, quantity: 1));
       } else {
@@ -91,10 +99,9 @@ class _ClothingStoreViewState extends State<ClothingStoreView> {
 
   void _decreaseQuantity(ClothingProduct product) {
     setState(() {
-      final index = _cartItems.indexWhere(
-        (item) => item.product.id == product.id,
-      );
+      final index = _cartIndexOf(product);
       if (index == -1) return;
+
       final item = _cartItems[index];
       if (item.quantity == 1) {
         _cartItems.removeAt(index);
@@ -136,80 +143,155 @@ class _ClothingStoreViewState extends State<ClothingStoreView> {
     setState(() {});
   }
 
+  void _selectCategory(int index) {
+    setState(() => _selectedCategory = index);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final visibleProducts = _filteredProducts;
-
     return Scaffold(
       backgroundColor: ClothingAppColors.ink,
       body: Column(
         children: [
           Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(34.r),
-                bottomRight: Radius.circular(34.r),
-              ),
-              child: ColoredBox(
-                color: ClothingAppColors.background,
-                child: CustomScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  slivers: [
-                    SliverPadding(
-                      padding: EdgeInsets.fromLTRB(22.w, 18.h, 22.w, 0),
-                      sliver: SliverToBoxAdapter(child: _HomeHeader()),
-                    ),
-                    SliverPadding(
-                      padding: EdgeInsets.fromLTRB(22.w, 16.h, 0, 0),
-                      sliver: SliverToBoxAdapter(
-                        child: SizedBox(
-                          height: 45.h,
-                          child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: _categories.length,
-                            separatorBuilder: (_, _) => 10.hSpace,
-                            itemBuilder: (context, index) {
-                              return ClothingCategoryChip(
-                                label: _categories[index],
-                                isSelected: _selectedCategory == index,
-                                onTap: () {
-                                  setState(() => _selectedCategory = index);
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                    SliverPadding(
-                      padding: EdgeInsets.fromLTRB(22.w, 30.h, 22.w, 30.h),
-                      sliver: SliverGrid.builder(
-                        key: ValueKey(_categories[_selectedCategory]),
-                        itemCount: visibleProducts.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 17.h,
-                          crossAxisSpacing: 15.w,
-                          childAspectRatio: 0.68,
-                        ),
-                        itemBuilder: (context, index) {
-                          final product = visibleProducts[index];
-                          return ClothingProductCard(
-                            product: product,
-                            onTap: () => _openDetail(product),
-                            onFavoriteTap: () => _toggleFavorite(product),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            child: _ProductPanel(
+              categories: _categories,
+              selectedCategory: _selectedCategory,
+              products: _filteredProducts,
+              onCategorySelected: _selectCategory,
+              onProductTap: _openDetail,
+              onFavoriteTap: _toggleFavorite,
             ),
           ),
           ClothingBottomNav(cartCount: _cartCount, onCartTap: _openCart),
         ],
       ),
+    );
+  }
+}
+
+class _ProductPanel extends StatelessWidget {
+  const _ProductPanel({
+    required this.categories,
+    required this.selectedCategory,
+    required this.products,
+    required this.onCategorySelected,
+    required this.onProductTap,
+    required this.onFavoriteTap,
+  });
+
+  final List<String> categories;
+  final int selectedCategory;
+  final List<ClothingProduct> products;
+  final ValueChanged<int> onCategorySelected;
+  final ValueChanged<ClothingProduct> onProductTap;
+  final ValueChanged<ClothingProduct> onFavoriteTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(34.r),
+        bottomRight: Radius.circular(34.r),
+      ),
+      child: ColoredBox(
+        color: ClothingAppColors.background,
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverPadding(
+              padding: EdgeInsets.fromLTRB(22.w, 18.h, 22.w, 0),
+              sliver: SliverToBoxAdapter(child: _HomeHeader()),
+            ),
+            SliverPadding(
+              padding: EdgeInsets.fromLTRB(22.w, 16.h, 0, 0),
+              sliver: SliverToBoxAdapter(
+                child: _FilterList(
+                  categories: categories,
+                  selectedCategory: selectedCategory,
+                  onCategorySelected: onCategorySelected,
+                ),
+              ),
+            ),
+            SliverPadding(
+              padding: EdgeInsets.fromLTRB(22.w, 30.h, 22.w, 30.h),
+              sliver: _ProductGrid(
+                products: products,
+                filterKey: categories[selectedCategory],
+                onProductTap: onProductTap,
+                onFavoriteTap: onFavoriteTap,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _FilterList extends StatelessWidget {
+  const _FilterList({
+    required this.categories,
+    required this.selectedCategory,
+    required this.onCategorySelected,
+  });
+
+  final List<String> categories;
+  final int selectedCategory;
+  final ValueChanged<int> onCategorySelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 45.h,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: categories.length,
+        separatorBuilder: (_, _) => 10.hSpace,
+        itemBuilder: (context, index) {
+          return ClothingCategoryChip(
+            label: categories[index],
+            isSelected: selectedCategory == index,
+            onTap: () => onCategorySelected(index),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _ProductGrid extends StatelessWidget {
+  const _ProductGrid({
+    required this.products,
+    required this.filterKey,
+    required this.onProductTap,
+    required this.onFavoriteTap,
+  });
+
+  final List<ClothingProduct> products;
+  final String filterKey;
+  final ValueChanged<ClothingProduct> onProductTap;
+  final ValueChanged<ClothingProduct> onFavoriteTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverGrid.builder(
+      key: ValueKey(filterKey),
+      itemCount: products.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 17.h,
+        crossAxisSpacing: 15.w,
+        childAspectRatio: 0.68,
+      ),
+      itemBuilder: (context, index) {
+        final product = products[index];
+        return ClothingProductCard(
+          product: product,
+          onTap: () => onProductTap(product),
+          onFavoriteTap: () => onFavoriteTap(product),
+        );
+      },
     );
   }
 }

@@ -26,55 +26,83 @@ class ClothingProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(16.r),
-                  child: ColoredBox(
-                    color: ClothingAppColors.surfaceSoft,
-                    child: ClothingNetworkImage(imageUrl: product.imageUrl),
-                  ),
-                ),
-                Positioned(
-                  right: 8.w,
-                  top: 8.h,
-                  child: ClothingIconButton(
-                    icon: product.isFavorite
-                        ? Icons.favorite_rounded
-                        : Icons.favorite_border_rounded,
-                    iconColor: product.isFavorite
-                        ? ClothingAppColors.danger
-                        : ClothingAppColors.muted,
-                    size: 29,
-                    onTap: onFavoriteTap,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          Expanded(child: _ProductImage(product: product, onTap: onFavoriteTap)),
           9.vSpace,
-          Text(
-            product.series,
-
-            style: GoogleFonts.ubuntu(
-              color: ClothingAppColors.ink,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w700,
-              letterSpacing: -1,
-            ),
-          ),
-          2.vSpace,
-          Text(
-            '\$${product.price.toStringAsFixed(2)}',
-            style: GoogleFonts.oswald(
-              color: ClothingAppColors.ink.withValues(alpha: .8),
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
+          _ProductInfo(product: product),
         ],
       ),
+    );
+  }
+}
+
+class _ProductImage extends StatelessWidget {
+  const _ProductImage({required this.product, required this.onTap});
+
+  final ClothingProduct product;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(16.r),
+          child: ColoredBox(
+            color: ClothingAppColors.surfaceSoft,
+            child: ClothingNetworkImage(imageUrl: product.imageUrl),
+          ),
+        ),
+        Positioned(
+          right: 8.w,
+          top: 8.h,
+          child: ClothingIconButton(
+            icon: product.isFavorite
+                ? Icons.favorite_rounded
+                : Icons.favorite_border_rounded,
+            iconColor: product.isFavorite
+                ? ClothingAppColors.danger
+                : ClothingAppColors.muted,
+            size: 29,
+            onTap: onTap,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _ProductInfo extends StatelessWidget {
+  const _ProductInfo({required this.product});
+
+  final ClothingProduct product;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          product.name,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: GoogleFonts.poppins(
+            color: ClothingAppColors.ink,
+            fontSize: 13.sp,
+            height: 1,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        2.vSpace,
+        Text(
+          '\$${product.price.toStringAsFixed(2)}',
+          style: GoogleFonts.poppins(
+            color: ClothingAppColors.ink.withValues(alpha: .8),
+            fontSize: 12.sp,
+            height: 1,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ],
     );
   }
 }
