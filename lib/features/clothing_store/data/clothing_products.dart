@@ -1,0 +1,96 @@
+import 'package:flutter_ui/features/clothing_store/model/clothing_product.dart';
+
+const List<ClothingProduct> clothingProducts = [
+  ClothingProduct(
+    id: 1,
+    name: 'Pocket',
+    series: 'Aesthetic Vintage',
+    price: 69.95,
+    size: 'XL',
+    imageUrl:
+        'https://i.pinimg.com/1200x/e3/2a/02/e32a02ce912d3e8ecdf9dd2e6463b7a1.jpg',
+    gallery: [
+      'https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=85',
+      'https://i.pinimg.com/1200x/33/1b/3c/331b3ce685c064b38d8efba6d561a9fb.jpg',
+      'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=900&q=85',
+      'https://i.pinimg.com/736x/64/e8/8e/64e88ec6901e0cf98ca54be75830307e.jpg',
+    ],
+    categories: ['Trending Now', 'Fresh Drops'],
+    isFavorite: true,
+  ),
+  ClothingProduct(
+    id: 2,
+    name: 'Hoodie',
+    series: 'Street Orange Capsule',
+    price: 64.95,
+    size: 'L',
+    imageUrl:
+        'https://i.pinimg.com/1200x/06/d3/19/06d3192bcca3d5d7e17b19262f17c24d.jpg',
+    gallery: [
+      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85',
+      'https://i.pinimg.com/736x/1e/14/86/1e1486bf6aba1a5d45d16d4ae85ee9f1.jpg',
+      'https://i.pinimg.com/736x/5f/4b/cf/5f4bcf42c7bcfc70552d7b174d4d0111.jpg',
+    ],
+    categories: ['Trending Now', 'Street Edit'],
+  ),
+  ClothingProduct(
+    id: 0,
+    name: 'Hoodie',
+    series: 'Street Orange Capsule',
+    price: 64.95,
+    size: 'L',
+    imageUrl:
+        'https://i.pinimg.com/1200x/b0/e2/06/b0e206c407957544ca12bb29e5d2072d.jpg',
+    gallery: [
+      'https://i.pinimg.com/1200x/62/32/06/6232061577e1bc074fa0aafa6550d924.jpg',
+      'https://i.pinimg.com/736x/50/e0/3f/50e03f6305a97f9ec78ce3d327b507e0.jpg',
+      'https://i.pinimg.com/1200x/c0/a7/be/c0a7be3d7ee7d6ee51f7ac3880e5e5e5.jpg',
+    ],
+    categories: ['Trending Now', 'Street Edit'],
+  ),
+  ClothingProduct(
+    id: 3,
+    name: 'Pants',
+    series: 'Fresh Utility Drop',
+    price: 74.95,
+    size: 'L',
+    imageUrl:
+        'https://i.pinimg.com/1200x/1a/89/2e/1a892e0698ea3fe6a1b0fb90c783d238.jpg',
+    gallery: [
+      'https://i.pinimg.com/1200x/62/32/06/6232061577e1bc074fa0aafa6550d924.jpg',
+      'https://i.pinimg.com/736x/50/e0/3f/50e03f6305a97f9ec78ce3d327b507e0.jpg',
+      'https://i.pinimg.com/1200x/c0/a7/be/c0a7be3d7ee7d6ee51f7ac3880e5e5e5.jpg',
+    ],
+    categories: ['Fresh Drops', 'Street Edit'],
+  ),
+  ClothingProduct(
+    id: 4,
+    name: 'Jacket',
+    series: 'Street Edit',
+    price: 104.95,
+    size: 'M',
+    imageUrl:
+        'https://i.pinimg.com/736x/b2/ca/77/b2ca77dd57fbb5cfd7f0810d9eecea3d.jpg',
+    gallery: [
+      'https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1506629905607-d9c297d7c130?auto=format&fit=crop&w=900&q=85',
+      'https://i.pinimg.com/1200x/8a/fa/08/8afa083af79531b194ed314f4d98f299.jpg',
+    ],
+    categories: ['Trending Now', 'Street Edit'],
+  ),
+  ClothingProduct(
+    id: 5,
+    name: 'Tee',
+    series: 'Trending Now',
+    price: 39.95,
+    size: 'S',
+    imageUrl:
+        'https://i.pinimg.com/736x/99/dc/fd/99dcfd166d8cbaf04d4ec7755e1246f3.jpg',
+    gallery: [
+      'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=900&q=85',
+    ],
+    categories: ['Fresh Drops', 'Street Edit'],
+  ),
+];

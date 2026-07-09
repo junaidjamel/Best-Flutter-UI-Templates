@@ -116,6 +116,17 @@ width="420" alt="Accessories Store App" />
 
 ---
 
+### 10. [Clothing Store App UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/clothing_store)
+
+A clean clothing store UI featuring product filters, fashion cards, detail previews, and a functional cart flow.
+
+#### UI Reference
+
+<img src="assets/clothing_store/Clothing_store_ui.jpeg"
+width="420" alt="Clothing Store App" />
+
+---
+
 ## Upcoming UIs
 
 More Flutter UI templates will be added soon, including:
