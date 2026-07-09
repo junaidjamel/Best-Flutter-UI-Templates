@@ -22,7 +22,7 @@ class ClothingCategoryChip extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 240),
         curve: Curves.easeOutCubic,
-        padding: EdgeInsets.symmetric(horizontal: 23.w),
+        padding: EdgeInsets.symmetric(horizontal: 13.w),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: isSelected ? ClothingAppColors.ink : ClothingAppColors.surface,
@@ -51,6 +51,7 @@ class ClothingCategoryChip extends StatelessWidget {
         child: Text(
           label,
           style: GoogleFonts.poppins(
+            letterSpacing: 0,
             color: isSelected
                 ? Colors.white
                 : ClothingAppColors.muted.withValues(alpha: 0.86),

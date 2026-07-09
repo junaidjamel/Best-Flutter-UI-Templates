@@ -42,9 +42,9 @@ const List<ClothingProduct> clothingProducts = [
     imageUrl:
         'https://i.pinimg.com/1200x/b0/e2/06/b0e206c407957544ca12bb29e5d2072d.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85',
-      'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=900&q=85',
-      'https://images.unsplash.com/photo-1533399710066-c33de66fe6bb?auto=format&fit=crop&w=900&q=85',
+      'https://i.pinimg.com/1200x/62/32/06/6232061577e1bc074fa0aafa6550d924.jpg',
+      'https://i.pinimg.com/736x/50/e0/3f/50e03f6305a97f9ec78ce3d327b507e0.jpg',
+      'https://i.pinimg.com/1200x/c0/a7/be/c0a7be3d7ee7d6ee51f7ac3880e5e5e5.jpg',
     ],
     categories: ['Trending Now', 'Street Edit'],
   ),
@@ -57,9 +57,9 @@ const List<ClothingProduct> clothingProducts = [
     imageUrl:
         'https://i.pinimg.com/1200x/1a/89/2e/1a892e0698ea3fe6a1b0fb90c783d238.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=900&q=85',
-      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=85',
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85',
+      'https://i.pinimg.com/1200x/62/32/06/6232061577e1bc074fa0aafa6550d924.jpg',
+      'https://i.pinimg.com/736x/50/e0/3f/50e03f6305a97f9ec78ce3d327b507e0.jpg',
+      'https://i.pinimg.com/1200x/c0/a7/be/c0a7be3d7ee7d6ee51f7ac3880e5e5e5.jpg',
     ],
     categories: ['Fresh Drops', 'Street Edit'],
   ),
@@ -74,7 +74,7 @@ const List<ClothingProduct> clothingProducts = [
     gallery: [
       'https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=900&q=85',
       'https://images.unsplash.com/photo-1506629905607-d9c297d7c130?auto=format&fit=crop&w=900&q=85',
-      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85',
+      'https://i.pinimg.com/1200x/8a/fa/08/8afa083af79531b194ed314f4d98f299.jpg',
     ],
     categories: ['Trending Now', 'Street Edit'],
   ),

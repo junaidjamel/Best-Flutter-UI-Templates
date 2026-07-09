@@ -37,14 +37,6 @@ class _ClothingStoreViewState extends State<ClothingStoreView> {
   void initState() {
     super.initState();
     _products = List.of(clothingProducts);
-    _seedCart();
-  }
-
-  void _seedCart() {
-    _cartItems.addAll([
-      ClothingCartItem(product: _products[1], quantity: 1),
-      ClothingCartItem(product: _products[2], quantity: 1),
-    ]);
   }
 
   int get _cartCount {
@@ -200,11 +192,11 @@ class _ProductPanel extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverPadding(
-              padding: EdgeInsets.fromLTRB(22.w, 18.h, 22.w, 0),
+              padding: EdgeInsets.fromLTRB(22.w, 10.h, 22.w, 0),
               sliver: SliverToBoxAdapter(child: _HomeHeader()),
             ),
             SliverPadding(
-              padding: EdgeInsets.fromLTRB(22.w, 16.h, 0, 0),
+              padding: EdgeInsets.only(top: 16.h),
               sliver: SliverToBoxAdapter(
                 child: _FilterList(
                   categories: categories,
@@ -214,7 +206,7 @@ class _ProductPanel extends StatelessWidget {
               ),
             ),
             SliverPadding(
-              padding: EdgeInsets.fromLTRB(22.w, 30.h, 22.w, 30.h),
+              padding: EdgeInsets.fromLTRB(22.w, 25.h, 22.w, 30.h),
               sliver: _ProductGrid(
                 products: products,
                 filterKey: categories[selectedCategory],
@@ -245,6 +237,7 @@ class _FilterList extends StatelessWidget {
     return SizedBox(
       height: 45.h,
       child: ListView.separated(
+        padding: EdgeInsets.symmetric(horizontal: 20),
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         separatorBuilder: (_, _) => 10.hSpace,
@@ -306,7 +299,7 @@ class _HomeHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              40.vSpace,
+              30.vSpace,
               Row(
                 children: [
                   Icon(
@@ -328,7 +321,7 @@ class _HomeHeader extends StatelessWidget {
                   ),
                 ],
               ),
-              13.vSpace,
+              8.vSpace,
               Text(
                 'Find your',
                 style: GoogleFonts.poppins(

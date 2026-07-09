@@ -15,11 +15,9 @@ class ClothingBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 112.h,
+      height: 100.h,
       padding: EdgeInsets.fromLTRB(35.w, 18.h, 35.w, 30.h),
-      decoration: const BoxDecoration(
-        color: ClothingAppColors.ink,
-      ),
+      decoration: const BoxDecoration(color: ClothingAppColors.ink),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -65,9 +63,7 @@ class _NavItem extends StatelessWidget {
               height: isActive ? 46.w : 42.w,
               width: isActive ? 46.w : 42.w,
               decoration: BoxDecoration(
-                color: isActive
-                    ? ClothingAppColors.orange
-                    : Colors.transparent,
+                color: isActive ? ClothingAppColors.orange : Colors.transparent,
                 shape: BoxShape.circle,
                 border: isActive
                     ? Border.all(
