@@ -127,6 +127,17 @@ width="420" alt="Clothing Store App" />
 
 ---
 
+### 11. [Spiral Scroll App UI](https://github.com/junaidjamel/Best-Flutter-UI-Templates/tree/main/lib/features/scroll_social)
+
+Socail Media App
+
+#### UI Reference
+
+<img src="assets/scroll_social/scroll_social_ui.png"
+width="420" alt="Clothing Store App" />
+
+---
+
 ## Upcoming UIs
 
 More Flutter UI templates will be added soon, including:
